@@ -1,0 +1,24 @@
+.recipeBox {
+    /* box-sizing: border-box; */
+    background-color:skyblue;
+
+    display: inline-block;
+    margin: 1vw;
+    min-width: 100px;
+    min-height: 100px;
+    width: 10vw;
+    height: 10vw;
+    
+    margin-top: auto;
+    border-radius: 2rem;
+}
+.recipeName {
+    display: block;
+    border-radius: 2rem;
+      
+    
+    text-align: center;
+    background-color:slateblue;
+    
+    
+}

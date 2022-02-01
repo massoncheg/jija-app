@@ -1,0 +1,52 @@
+.baseSelectWrapper { 
+    vertical-align: middle;
+    display: inline-block;
+    background-color: rgb(190, 255, 233);
+    width: 30vw;
+    border: 2px solid rgb(16, 0, 41);
+    border-radius: 1vw;
+    margin: 10px;
+}
+.baseSelectWrapper div{
+    margin: 10px;
+}
+.flavoringsSelectComponentWrapper{
+    vertical-align: middle;
+    display: inline-block;
+    background-color: rgb(255, 190, 220);
+    width: 25vw;
+    border: 2px solid rgb(16, 0, 41);
+    border-radius: 1vw;
+    margin: 10px;
+}
+
+.flavoringItem {
+    max-width: 400px;
+    background-color: rgb(202, 205, 255);
+    border: 1px solid rgb(16, 0, 41);
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.recipeDescriptionWrapper{
+    vertical-align:middle;
+    display: inline-block;
+    background-color: rgb(190, 211, 255);
+    width: 25vw;
+    height: 25vw;
+    border: 2px solid rgb(16, 0, 41);
+    border-radius: 1vw;
+    margin: 10px;
+}
+
+.flavoringSearchItem {
+    max-width: 400px;
+    background-color: rgb(255, 202, 202);
+    border: 1px solid rgb(16, 0, 41);
+    border-radius: 5px;
+    margin: 5px;
+}
+.flavoringSearchItem .flavoringName{
+    margin-left: 10px;
+    
+}
