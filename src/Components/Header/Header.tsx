@@ -3,12 +3,14 @@ import {Link} from "react-router-dom";
 
 import cls from "./Header.module.css"
 
+const baseUrl: string = ''
+
 const Header = () => {
     return (
         <div className = {cls.headerWrapper}>
-           <Link to="/home">Home</Link>
-           <Link to="/my-recipes">My recipes</Link>
-           <Link to="/redactor?n=new-recipe">New recipe</Link>
+           <Link to={baseUrl + "/home"}>Home</Link>
+           <Link to={baseUrl +"/my-recipes"}>My recipes</Link>
+           <Link to={baseUrl +"/redactor?n=new-recipe"}>New recipe</Link>
         </div>
     )
 }

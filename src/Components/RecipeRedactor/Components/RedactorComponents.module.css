@@ -1,4 +1,4 @@
-.baseSelectWrapper { 
+.baseSelectWrapper {
     vertical-align: middle;
     display: inline-block;
     background-color: rgb(190, 255, 233);
@@ -7,10 +7,12 @@
     border-radius: 1vw;
     margin: 10px;
 }
-.baseSelectWrapper div{
+
+.baseSelectWrapper div {
     margin: 10px;
 }
-.flavoringsSelectComponentWrapper{
+
+.flavoringsSelectComponentWrapper {
     vertical-align: middle;
     display: inline-block;
     background-color: rgb(255, 190, 220);
@@ -28,14 +30,30 @@
     margin: 5px;
 }
 
-.recipeDescriptionWrapper{
-    vertical-align:middle;
+.recipeDescriptionWrapper {
+    vertical-align: middle;
     display: inline-block;
     background-color: rgb(190, 211, 255);
     width: 25vw;
     height: 25vw;
     border: 2px solid rgb(16, 0, 41);
     border-radius: 1vw;
+    margin: 10px;
+}
+
+.recipeDescriptionWrapper>div {
+    margin: 10px;
+}
+
+.flavorsBlock {
+    background-color: rgb(200, 190, 255);
+    border: 2px solid rgb(16, 0, 41);
+    min-height: 5vw;
+    border-radius: 1vw;
+    margin: 10px;
+}
+
+.flavorsBlock>div{
     margin: 10px;
 }
 
@@ -46,7 +64,8 @@
     border-radius: 5px;
     margin: 5px;
 }
-.flavoringSearchItem .flavoringName{
+
+.flavoringSearchItem .flavoringName {
     margin-left: 10px;
-    
+
 }
