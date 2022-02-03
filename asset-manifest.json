@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/jija-app/static/css/main.189ecc14.chunk.css",
-    "main.js": "/jija-app/static/js/main.ddd2cb6b.chunk.js",
-    "main.js.map": "/jija-app/static/js/main.ddd2cb6b.chunk.js.map",
+    "main.css": "/jija-app/static/css/main.00c6ea1e.chunk.css",
+    "main.js": "/jija-app/static/js/main.1298acbf.chunk.js",
+    "main.js.map": "/jija-app/static/js/main.1298acbf.chunk.js.map",
     "runtime-main.js": "/jija-app/static/js/runtime-main.e6afd391.js",
     "runtime-main.js.map": "/jija-app/static/js/runtime-main.e6afd391.js.map",
     "static/js/2.8d59aba5.chunk.js": "/jija-app/static/js/2.8d59aba5.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.8f149822.chunk.js": "/jija-app/static/js/3.8f149822.chunk.js",
     "static/js/3.8f149822.chunk.js.map": "/jija-app/static/js/3.8f149822.chunk.js.map",
     "index.html": "/jija-app/index.html",
-    "static/css/main.189ecc14.chunk.css.map": "/jija-app/static/css/main.189ecc14.chunk.css.map",
+    "static/css/main.00c6ea1e.chunk.css.map": "/jija-app/static/css/main.00c6ea1e.chunk.css.map",
     "static/js/2.8d59aba5.chunk.js.LICENSE.txt": "/jija-app/static/js/2.8d59aba5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e6afd391.js",
     "static/js/2.8d59aba5.chunk.js",
-    "static/css/main.189ecc14.chunk.css",
-    "static/js/main.ddd2cb6b.chunk.js"
+    "static/css/main.00c6ea1e.chunk.css",
+    "static/js/main.1298acbf.chunk.js"
   ]
 }
