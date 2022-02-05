@@ -32,15 +32,6 @@ const SelectedFlavoringItem = ({ engName, flavoringPrecent, onPrecentChange, onD
     )
 }
 
-// interface FlavoringsSelectProps {
-//     reducer: {
-//         handleFlavoringSelect: (id: number, event: React.FormEvent<HTMLButtonElement>) => void;
-//         handlePrecentageChange: (id: number, event: React.FormEvent<HTMLInputElement>) => void;
-//         handleFlavoringDelete: (id:number) => void;
-//     };
-//     flavoringsList: { flavoring: iDBFlavoring, flavoringPrecent: number }[]
-// }
-
 const FlavoringsSelect = () => {
 
     const state: FlavoringsSelectState = useSelector((state: RootState) => state.flavorings)
@@ -49,7 +40,9 @@ const FlavoringsSelect = () => {
     return (
         <div className={cls.flavoringsSelectComponentWrapper}>
             <FlavoringsSearch addFlavoring={(e) => dispatch(handleFlavoringSelect(e))} />
-            <div>{state.selectedFlavors.map((f: { flavoring: iDBFlavoring, flavoringPrecent: number }) => <SelectedFlavoringItem engName={f.flavoring.engName} flavoringPrecent={f.flavoringPrecent}
+            <div className={cls.selectedFlavorsArea}>
+                <div style={{"font-size":"20px","color": "white", "margin": "0.5vh"} as React.CSSProperties}>Выбранные аромотизаторы:</div>
+                {state.selectedFlavors.map((f: { flavoring: iDBFlavoring, flavoringPrecent: number }) => <SelectedFlavoringItem engName={f.flavoring.engName} flavoringPrecent={f.flavoringPrecent}
                 onPrecentChange={(id:number, event:React.FocusEvent<HTMLInputElement>) => dispatch(handlePrecentageChange({id, event}))} onDelete={(id: number) => dispatch(handleFlavoringDelete(id))} flavoringId={f.flavoring.id} />)}
             </div>
         </div>

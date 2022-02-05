@@ -1,3 +1,5 @@
+/* Выбор базы */
+
 .baseSelectWrapper {
     vertical-align: middle;
     display: inline-block;
@@ -6,11 +8,16 @@
     border: 2px solid rgb(16, 0, 41);
     border-radius: 1vw;
     margin: 10px;
+    padding: 10px;
 }
 
 .baseSelectWrapper div {
     margin: 10px;
 }
+
+/* Выбор базы */
+
+/* Поиск и выбор аромок */
 
 .flavoringsSelectComponentWrapper {
     vertical-align: middle;
@@ -20,16 +27,79 @@
     border: 2px solid rgb(16, 0, 41);
     border-radius: 1vw;
     margin: 10px;
+    padding: 10px;
+}
+
+.selectedFlavorsArea{
+    background-color: rgb(246, 114, 128);
+    border: 2px solid rgb(80, 0, 0);
+    border-radius: 0.5vw;
+    margin-top: 1vh;
+    min-height: 5vh;
 }
 
 .flavoringItem {
     max-width: 400px;
-    background-color: rgb(202, 205, 255);
-    border: 1px solid rgb(16, 0, 41);
+
+    background-color: rgb(255, 126, 126);
+    border: 1px solid rgb(50, 0, 131);
     border-radius: 5px;
     margin: 5px;
+    padding: 5px;
 }
 
+
+.flavoringSearchInput {
+    position: relative;
+    display: inline-block;
+    width: 24vw;
+    margin: 0.2vw;
+
+}
+
+.dropdownContent {
+    display: none;
+    position: relative;
+    /* position: absolute; */
+    /* background-color: #98abff; */
+    min-width: 22vw;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    z-index: 1;
+    margin-top: 5px;
+}
+
+
+.flavoringSearchWrapper:focus-within .dropdownContent {
+    display: block;
+    
+
+}
+.flavoringSearchWrapper{
+    background-color: rgb(255, 126, 158);
+    min-width: 24vw;
+    min-height: 11vw;
+}
+
+.flavoringSearchItembutton {
+    background-color: rgb(255, 126, 126);
+    border: 1px solid rgb(143, 0, 67);
+    color: white;
+    padding: 5px;
+    font-size: 16px;
+    margin: 2px;
+    border-radius: 5px;
+    
+}
+
+.flavoringSearchItem .flavoringName {
+    margin-left: 10px;
+
+}
+
+/* Поиск и выбор аромок */
+
+/* Описание рецепта */
 .recipeDescriptionWrapper {
     vertical-align: middle;
     display: inline-block;
@@ -39,6 +109,7 @@
     border: 2px solid rgb(16, 0, 41);
     border-radius: 1vw;
     margin: 10px;
+    padding: 10px;
 }
 
 .recipeDescriptionWrapper>div {
@@ -46,6 +117,7 @@
 }
 
 .flavorsBlock {
+    position: relative;
     background-color: rgb(200, 190, 255);
     border: 2px solid rgb(16, 0, 41);
     min-height: 5vw;
@@ -53,19 +125,8 @@
     margin: 10px;
 }
 
-.flavorsBlock>div{
+.flavorsBlock>div {
     margin: 10px;
 }
 
-.flavoringSearchItem {
-    max-width: 400px;
-    background-color: rgb(255, 202, 202);
-    border: 1px solid rgb(16, 0, 41);
-    border-radius: 5px;
-    margin: 5px;
-}
-
-.flavoringSearchItem .flavoringName {
-    margin-left: 10px;
-
-}
+/* Описание рецепта */

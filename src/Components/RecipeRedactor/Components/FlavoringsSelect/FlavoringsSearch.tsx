@@ -7,9 +7,10 @@ import cls from "../RedactorComponents.module.css"
 
 interface FlavoringSearchItemProps {
     addFlavoring: (id: number, event: React.FormEvent<HTMLButtonElement>) => void;
+
     id: number;
     engName: string;
-    rusName: string 
+    rusName: string
 
 }
 
@@ -17,11 +18,13 @@ const FlavoringSearchItem = ({ addFlavoring, id, engName, rusName }: FlavoringSe
 
     return (
         <div className={cls.flavoringSearchItem}>
-            <span className={cls.flavoringName}>{engName || ""}</span>
-            <span className={cls.flavoringName}>{rusName || ""}</span>
-            <span>
-                <button onClick={(e) => addFlavoring(id, e)}>+</button>
-            </span>
+
+
+            <button onClick={(e) => addFlavoring(id, e)} title="Нажмите, чтобы добавить" className= {cls.flavoringSearchItembutton}>
+                <span className={cls.flavoringName}>{engName || ""}</span>
+                <span className={cls.flavoringName}>{rusName || ""}</span>
+            </button>
+
         </div>
     )
 }
@@ -33,7 +36,7 @@ export interface iDBFlavoring {
     recommendedPercentage?: string,
     recommendedPercentageDrops?: string
 }
- 
+
 // Отображает поиск по аромотизаторам и позволяет добавить выбранную аромку к рецепту
 interface FlavoringsSearchProps {
     addFlavoring: (id: number, event: React.FormEvent<HTMLButtonElement>) => void;
@@ -41,7 +44,7 @@ interface FlavoringsSearchProps {
 
 const FlavoringsSearch = ({ addFlavoring, }: FlavoringsSearchProps) => {
 
-    const [searchText, setSearchText] = useState('');    
+    const [searchText, setSearchText] = useState('');
     const [searchResults, setSearchResults] = useState<iDBFlavoring[]>([]);
 
     const filterForSearch = (arr: iDBFlavoring[], val: string) => {
@@ -64,9 +67,11 @@ const FlavoringsSearch = ({ addFlavoring, }: FlavoringsSearchProps) => {
     let searchResultsList = searchResults.map(item => <FlavoringSearchItem addFlavoring={addFlavoring} id={item.id} engName={item.engName} rusName={item.rusName} />)
 
     return (
-        <div>
-            <input type="text" placeholder="Search.." id="fSearch" onChange={searchChangeHandler} value={searchText} />
-            {searchResults.length !== 0 ? <div>{searchResultsList}</div> : <></>}
+        <div className={cls.flavoringSearchWrapper}>
+
+            <input type="text" placeholder="Search.." id="fSearch" onChange={searchChangeHandler} value={searchText} className={cls.flavoringSearchInput} />
+            <div className={cls.dropdownContent}>{searchResultsList}</div>
+
         </div>
     )
 }
