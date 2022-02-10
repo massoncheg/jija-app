@@ -22,6 +22,7 @@ export const baseSelectSlice = createSlice({
     name: 'baseSelect',
     initialState: initialState,
     reducers: {
+        
         handlePgProportionsChange: (state, action: PayloadAction<React.FormEvent<HTMLInputElement>>) => {
 
             state.pgPropotion = +action.payload.currentTarget.value

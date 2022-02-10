@@ -15,8 +15,6 @@ const BaseSelect = () => {
 
     const state: BaseSelectState = useSelector((state: RootState) => state.base)
     const dispatch = useDispatch();
-
-    // const pgPropotion: number = useSelector((state: RootState) => state.base.pgPropotion)
     
     return (
         <div className={cls.baseSelectWrapper}>

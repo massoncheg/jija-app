@@ -1,7 +1,12 @@
+html {
+  background-color:rgb(233, 233, 233);
+}
+
 .appWrapper {
 display: grid;
  grid-template-areas: "h h h h" "c c c c";  
 grid-template-rows: 5vh 95vh; 
+
 }
 
 .appWrapperContent {

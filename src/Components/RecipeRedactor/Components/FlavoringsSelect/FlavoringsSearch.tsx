@@ -20,8 +20,9 @@ const FlavoringSearchItem = ({ addFlavoring, id, engName, rusName }: FlavoringSe
         <div className={cls.flavoringSearchItem}>
 
 
-            <button onClick={(e) => addFlavoring(id, e)} title="Нажмите, чтобы добавить" className= {cls.flavoringSearchItembutton}>
+            <button onClick={(e) => addFlavoring(id, e)} title="Нажмите, чтобы добавить" className={cls.flavoringSearchItembutton}>
                 <span className={cls.flavoringName}>{engName || ""}</span>
+                <span> | </span>
                 <span className={cls.flavoringName}>{rusName || ""}</span>
             </button>
 
@@ -48,8 +49,8 @@ const FlavoringsSearch = ({ addFlavoring, }: FlavoringsSearchProps) => {
     const [searchResults, setSearchResults] = useState<iDBFlavoring[]>([]);
 
     const filterForSearch = (arr: iDBFlavoring[], val: string) => {
-
-        return arr.filter((item: iDBFlavoring) => item.engName.toLowerCase().includes(val.toLowerCase())).slice(0, 5)
+        let i = 0;
+        return arr.filter(function callbackFn(item: iDBFlavoring) { return (item.engName.toLowerCase().includes(val.toLowerCase()) || item.rusName.toLowerCase().includes(val.toLowerCase())) }).slice(0, 15)
     }
 
     const searchChangeHandler = (event: React.FormEvent<HTMLInputElement>): void => {
@@ -69,7 +70,10 @@ const FlavoringsSearch = ({ addFlavoring, }: FlavoringsSearchProps) => {
     return (
         <div className={cls.flavoringSearchWrapper}>
 
-            <input type="text" placeholder="Search.." id="fSearch" onChange={searchChangeHandler} value={searchText} className={cls.flavoringSearchInput} />
+
+            <input type="text" placeholder="Search" id="fSearch" onChange={searchChangeHandler} value={searchText} className={cls.flavoringSearchInput} />
+
+
             <div className={cls.dropdownContent}>{searchResultsList}</div>
 
         </div>

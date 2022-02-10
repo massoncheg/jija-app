@@ -23,11 +23,8 @@ const calculator = {
     },
     calculateOverallFlavorsVolume: (flavoringsList: iCalculatedFlavoring[]) => {
 
-        let overallVolume = 0;
-        for (let i = 0; i < flavoringsList.length; ++i) {
-            overallVolume += flavoringsList[i]["flavoringVolume"];
-        }
-
+        let overallVolume = flavoringsList.reduce((sum, item)=> sum + item.flavoringVolume, 0);
+        
         return overallVolume
     },
     calculatePgVolume: (liquidVolume: number, pgPropotion: number, NicotineVolume: number, overallFlavorsVolume: number) => { return liquidVolume * (pgPropotion / 100) - NicotineVolume - overallFlavorsVolume }
@@ -64,15 +61,16 @@ export const descriptionSlice = createSlice({
     reducers: {
         handleSubmit: (state, action: PayloadAction<{ baseState: BaseSelectState, flavoringsState: FlavoringsSelectState }>) => {
 
-        
+            const baseState = action.payload.baseState
+            const flavoringState = action.payload.flavoringsState
 
-            let liquidVolume = action.payload.baseState.liquidVolume;
-            let vgVolume = calculator.calculateVgVolume(liquidVolume, action.payload.baseState.vgPropotion);
-            let nicotineVolume = calculator.calculateNicotineVolume(liquidVolume, action.payload.baseState.nicotineTipe, action.payload.baseState.nicotinePercentage);
-            let selectedFlavorsVolumes = calculator.calculateFlavorsVolumes(liquidVolume, action.payload.flavoringsState.selectedFlavors);
-            let overallFlavorsVolume = calculator.calculateOverallFlavorsVolume(selectedFlavorsVolumes);
-            let pgVolume = calculator.calculatePgVolume(liquidVolume, action.payload.baseState.pgPropotion, nicotineVolume, overallFlavorsVolume);
-    
+            const liquidVolume = baseState.liquidVolume;
+            const vgVolume = calculator.calculateVgVolume(liquidVolume, baseState.vgPropotion);
+            const nicotineVolume = calculator.calculateNicotineVolume(liquidVolume, baseState.nicotineTipe, baseState.nicotinePercentage);
+            const selectedFlavorsVolumes = calculator.calculateFlavorsVolumes(liquidVolume, flavoringState.selectedFlavors);
+            const overallFlavorsVolume = calculator.calculateOverallFlavorsVolume(selectedFlavorsVolumes);
+            const pgVolume = calculator.calculatePgVolume(liquidVolume, baseState.pgPropotion, nicotineVolume, overallFlavorsVolume);
+            
             state.liquidVolume = liquidVolume
             state.pgVolume = pgVolume
             state.vgVolume = vgVolume

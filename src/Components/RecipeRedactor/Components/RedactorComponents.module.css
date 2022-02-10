@@ -23,14 +23,96 @@
     vertical-align: middle;
     display: inline-block;
     background-color: rgb(255, 190, 220);
+
     width: 25vw;
+    padding: 1vh;
+    margin: 10px;
+
     border: 2px solid rgb(16, 0, 41);
     border-radius: 1vw;
-    margin: 10px;
-    padding: 10px;
 }
 
-.selectedFlavorsArea{
+/* Поиск по аромотизаторам */
+
+.flavoringSearchWrapper {
+    background-color: rgb(255, 126, 158);
+    width: 25vw;
+    height: 30vh;
+
+    border: 2px solid rgb(16, 0, 41);
+    border-radius: 1vw;
+}
+
+.flavoringSearchInput {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    
+    margin-top: 1vh;
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 22vw;
+    padding: 0;
+}
+
+.dropdownContent::-webkit-scrollbar {
+    min-width: 5px;
+    /* ширина для вертикального скролла */
+    max-width: 0.6vw;
+    background-color: #86bfff;
+    
+}
+
+.dropdownContent::-webkit-scrollbar-thumb {
+    background-color: #843465;
+    border-radius: 9em;
+}
+
+.dropdownContent::-webkit-scrollbar-thumb:hover {
+    background-color: #253861;
+}
+
+.dropdownContent {
+    display: block;
+    position: relative;
+
+    min-width: 23vw;
+    height: 24vh;
+
+    overflow-y: scroll;
+    scrollbar-width: 5px;
+
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    margin-top: 1vh;
+    margin-left: auto;
+    margin-right: auto;
+
+    
+
+}
+
+
+
+
+
+.flavoringSearchItembutton {
+    background-color: rgb(255, 126, 126);
+    border: 1px solid rgb(143, 0, 67);
+    color: white;
+    padding: 5px;
+    font-size: 16px;
+    margin: 2px;
+    border-radius: 5px;
+
+}
+
+/* Поиск по ароматизаторам */
+
+/* Выбранные ароматизаторы */
+
+.selectedFlavorsArea {
     background-color: rgb(246, 114, 128);
     border: 2px solid rgb(80, 0, 0);
     border-radius: 0.5vw;
@@ -48,54 +130,7 @@
     padding: 5px;
 }
 
-
-.flavoringSearchInput {
-    position: relative;
-    display: inline-block;
-    width: 24vw;
-    margin: 0.2vw;
-
-}
-
-.dropdownContent {
-    display: none;
-    position: relative;
-    /* position: absolute; */
-    /* background-color: #98abff; */
-    min-width: 22vw;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    z-index: 1;
-    margin-top: 5px;
-}
-
-
-.flavoringSearchWrapper:focus-within .dropdownContent {
-    display: block;
-    
-
-}
-.flavoringSearchWrapper{
-    background-color: rgb(255, 126, 158);
-    min-width: 24vw;
-    min-height: 11vw;
-}
-
-.flavoringSearchItembutton {
-    background-color: rgb(255, 126, 126);
-    border: 1px solid rgb(143, 0, 67);
-    color: white;
-    padding: 5px;
-    font-size: 16px;
-    margin: 2px;
-    border-radius: 5px;
-    
-}
-
-.flavoringSearchItem .flavoringName {
-    margin-left: 10px;
-
-}
+/* Выбранные ароматизаторы */
 
 /* Поиск и выбор аромок */
 
@@ -105,7 +140,6 @@
     display: inline-block;
     background-color: rgb(190, 211, 255);
     width: 25vw;
-    height: 25vw;
     border: 2px solid rgb(16, 0, 41);
     border-radius: 1vw;
     margin: 10px;

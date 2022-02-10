@@ -27,9 +27,11 @@ export const flavoringsSelectSlice = createSlice({
                 state.selectedFlavors.length === 0
 
                 /* Здесь проверяем есть ли уже эта аромка в списке*/
-                || state.selectedFlavors.findIndex((item: iSelectedFlavoring) => item.flavoring.id === action.payload) === -1) {
+                
+                || !state.selectedFlavors.map((item) => item.flavoring.id).includes(action.payload)
+                ){
 
-                let flavoring: iDBFlavoring | undefined = tpa.find((i: iDBFlavoring) => i.id === action.payload);
+                const flavoring: iDBFlavoring | undefined = tpa.find((i: iDBFlavoring) => i.id === action.payload);
                 if (flavoring) {
                     state.selectedFlavors = current(state.selectedFlavors).concat(
                         {
@@ -44,13 +46,13 @@ export const flavoringsSelectSlice = createSlice({
 
         handlePrecentageChange: (state, action: PayloadAction<{ id: number, event: React.FormEvent<HTMLInputElement> }>) => {
 
-            let indexPrecentToChange = state.selectedFlavors.findIndex((item: iSelectedFlavoring) => item.flavoring.id === Number(action.payload.id));
+            const indexPrecentToChange = state.selectedFlavors.findIndex((item: iSelectedFlavoring) => item.flavoring.id === Number(action.payload.id));
             state.selectedFlavors[indexPrecentToChange] = { ...state.selectedFlavors[indexPrecentToChange], flavoringPrecent: +action.payload.event.currentTarget.value };
 
         },
 
         handleFlavoringDelete: (state, action: PayloadAction<number>) => {
-            let indexFlavoringToDelete = current(state.selectedFlavors).findIndex((item: iSelectedFlavoring) => item.flavoring.id === Number(action.payload));
+            const indexFlavoringToDelete = current(state.selectedFlavors).findIndex((item: iSelectedFlavoring) => item.flavoring.id === Number(action.payload));
             let tmpArr = [...current(state.selectedFlavors)]
             tmpArr.splice(indexFlavoringToDelete, 1);
             state.selectedFlavors = tmpArr;
