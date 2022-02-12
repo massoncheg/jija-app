@@ -44,7 +44,7 @@ export const flavoringsSelectSlice = createSlice({
             }
         },
 
-        handlePrecentageChange: (state, action: PayloadAction<{ id: number, event: React.FormEvent<HTMLInputElement> }>) => {
+        handlePercentageChange: (state, action: PayloadAction<{ id: number, event: React.FormEvent<HTMLInputElement> }>) => {
 
             const indexPrecentToChange = state.selectedFlavors.findIndex((item: iSelectedFlavoring) => item.flavoring.id === Number(action.payload.id));
             state.selectedFlavors[indexPrecentToChange] = { ...state.selectedFlavors[indexPrecentToChange], flavoringPrecent: +action.payload.event.currentTarget.value };
@@ -63,7 +63,7 @@ export const flavoringsSelectSlice = createSlice({
 
 
 export const {
-    handleFlavoringSelect, handlePrecentageChange,
+    handleFlavoringSelect, handlePercentageChange,
     handleFlavoringDelete
 } = flavoringsSelectSlice.actions
 

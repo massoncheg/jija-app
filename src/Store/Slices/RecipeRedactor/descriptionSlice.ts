@@ -5,10 +5,10 @@ import { FlavoringsSelectState, iSelectedFlavoring } from './flavoringsSlice'
 
 /* Функции для расчета объемов компонентов */
 const calculator = {
-    calculateVgVolume: (liquidVolume: number, vgPropotion: number) => { return liquidVolume * (vgPropotion / 100) },
-    calculateNicotineVolume: (liquidVolume: number, nicotineTipe: string, nicotinePercentage: number) => {
-        if (nicotineTipe === "Standart") { return liquidVolume * (nicotinePercentage / 100) }
-        else if (nicotineTipe === "Salt") { return liquidVolume * (nicotinePercentage / 200) }
+    calculateVgVolume: (liquidVolume: number, vgProportion: number) => { return liquidVolume * (vgProportion / 100) },
+    calculateNicotineVolume: (liquidVolume: number, nicotineType: string, nicotinePercentage: number) => {
+        if (nicotineType === "Standard") { return liquidVolume * (nicotinePercentage / 100) }
+        else if (nicotineType === "Salt") { return liquidVolume * (nicotinePercentage / 200) }
         else { return 0 }
     },
     calculateFlavorsVolumes: (liquidVolume: number, flavoringsList: iSelectedFlavoring[]) => {
@@ -27,7 +27,7 @@ const calculator = {
         
         return overallVolume
     },
-    calculatePgVolume: (liquidVolume: number, pgPropotion: number, NicotineVolume: number, overallFlavorsVolume: number) => { return liquidVolume * (pgPropotion / 100) - NicotineVolume - overallFlavorsVolume }
+    calculatePgVolume: (liquidVolume: number, pgProportion: number, NicotineVolume: number, overallFlavorsVolume: number) => { return liquidVolume * (pgProportion / 100) - NicotineVolume - overallFlavorsVolume }
 }
 
 interface iCalculatedFlavoring {
@@ -37,7 +37,7 @@ interface iCalculatedFlavoring {
     flavoringVolumeDrops: number
 }
 
-export interface DesriptionState {
+export interface DescriptionState {
     liquidVolume: number,
     pgVolume: number,
     vgVolume: number,
@@ -46,7 +46,7 @@ export interface DesriptionState {
     selectedFlavorsVolumes: iCalculatedFlavoring[]
 }
 
-const initialState: DesriptionState = {
+const initialState: DescriptionState = {
     liquidVolume: 0,
     pgVolume: 0,
     vgVolume: 0,
@@ -65,11 +65,11 @@ export const descriptionSlice = createSlice({
             const flavoringState = action.payload.flavoringsState
 
             const liquidVolume = baseState.liquidVolume;
-            const vgVolume = calculator.calculateVgVolume(liquidVolume, baseState.vgPropotion);
-            const nicotineVolume = calculator.calculateNicotineVolume(liquidVolume, baseState.nicotineTipe, baseState.nicotinePercentage);
+            const vgVolume = calculator.calculateVgVolume(liquidVolume, baseState.vgProportion);
+            const nicotineVolume = calculator.calculateNicotineVolume(liquidVolume, baseState.nicotineType, baseState.nicotinePercentage);
             const selectedFlavorsVolumes = calculator.calculateFlavorsVolumes(liquidVolume, flavoringState.selectedFlavors);
             const overallFlavorsVolume = calculator.calculateOverallFlavorsVolume(selectedFlavorsVolumes);
-            const pgVolume = calculator.calculatePgVolume(liquidVolume, baseState.pgPropotion, nicotineVolume, overallFlavorsVolume);
+            const pgVolume = calculator.calculatePgVolume(liquidVolume, baseState.pgProportion, nicotineVolume, overallFlavorsVolume);
             
             state.liquidVolume = liquidVolume
             state.pgVolume = pgVolume

@@ -14,11 +14,17 @@
 }
 .recipeName {
     display: block;
-    border-radius: 2rem;
+    
       
     
     text-align: center;
     background-color:slateblue;
     
     
+}
+.recipeDescription{
+    display:block;
+    overflow:auto;
+    width: 100%;
+    height: 100%;
 }

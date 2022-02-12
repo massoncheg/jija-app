@@ -5,7 +5,7 @@ import FlavoringsSearch, { iDBFlavoring } from "./FlavoringsSearch";
 import cls from "../RedactorComponents.module.css"
 import { FlavoringsSelectState } from "../../../../Store/Slices/RecipeRedactor/flavoringsSlice";
 import {
-    handleFlavoringSelect, handlePrecentageChange,
+    handleFlavoringSelect, handlePercentageChange,
     handleFlavoringDelete
 } from "../../../../Store/Slices/RecipeRedactor/flavoringsSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -43,7 +43,7 @@ const FlavoringsSelect = () => {
             <div className={cls.selectedFlavorsArea}>
                 <div style={{"font-size":"20px","color": "white", "margin": "0.5vh"} as React.CSSProperties}>Выбранные аромотизаторы:</div>
                 {state.selectedFlavors.map((f: { flavoring: iDBFlavoring, flavoringPrecent: number }) => <SelectedFlavoringItem engName={f.flavoring.engName} flavoringPrecent={f.flavoringPrecent}
-                onPrecentChange={(id:number, event:React.FocusEvent<HTMLInputElement>) => dispatch(handlePrecentageChange({id, event}))} onDelete={(id: number) => dispatch(handleFlavoringDelete(id))} flavoringId={f.flavoring.id} />)}
+                onPrecentChange={(id:number, event:React.FocusEvent<HTMLInputElement>) => dispatch(handlePercentageChange({id, event}))} onDelete={(id: number) => dispatch(handleFlavoringDelete(id))} flavoringId={f.flavoring.id} />)}
             </div>
         </div>
     )

@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BaseSelectState } from "../../../../Store/Slices/RecipeRedactor/baseSlice";
-import { DesriptionState, handleSubmit } from "../../../../Store/Slices/RecipeRedactor/descriptionSlice";
+import { DescriptionState, handleSubmit } from "../../../../Store/Slices/RecipeRedactor/descriptionSlice";
 import { FlavoringsSelectState } from "../../../../Store/Slices/RecipeRedactor/flavoringsSlice";
 import { RootState } from "../../../../Store/store";
 
@@ -26,7 +26,7 @@ const RecipeDescription = () => {
 
     const baseState: BaseSelectState = useSelector((state: RootState) => state.base)
     const flavoringsState: FlavoringsSelectState = useSelector((state: RootState) => state.flavorings)
-    const descriptionState: DesriptionState = useSelector((state: RootState) => state.description)
+    const descriptionState: DescriptionState = useSelector((state: RootState) => state.description)
     const dispatch = useDispatch();
 
     return (

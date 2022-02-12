@@ -10,7 +10,7 @@
             <div className = {cls.headerWrapper}>
             <Link to={baseUrl + "/home"}>Home</Link>
             <Link to={baseUrl +"/my-recipes"}>My recipes</Link>
-            <Link to={baseUrl +"/redactor?n=new-recipe"}>New recipe</Link>
+            <Link to={baseUrl +"/redactor"}>New recipe</Link>
             </div>
         )
     }

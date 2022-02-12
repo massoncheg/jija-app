@@ -3,17 +3,17 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 
 export interface BaseSelectState {
-    pgPropotion: number;
-    vgPropotion: number;
-    nicotineTipe: string;
+    pgProportion: number;
+    vgProportion: number;
+    nicotineType: string;
     nicotinePercentage: number;
     liquidVolume: number;
 }
 
 const initialState: BaseSelectState = {
-    pgPropotion: 50,
-    vgPropotion: 50,
-    nicotineTipe: 'Salt',
+    pgProportion: 50,
+    vgProportion: 50,
+    nicotineType: 'Salt',
     nicotinePercentage: 20,
     liquidVolume: 30
 }
@@ -23,25 +23,25 @@ export const baseSelectSlice = createSlice({
     initialState: initialState,
     reducers: {
         
-        handlePgProportionsChange: (state, action: PayloadAction<React.FormEvent<HTMLInputElement>>) => {
+        handlePgProportionsChange: (state, action: PayloadAction<string>) => {
 
-            state.pgPropotion = +action.payload.currentTarget.value
-            state.vgPropotion = 100 - +action.payload.currentTarget.value;
+            state.pgProportion = +action.payload
+            state.vgProportion = 100 - +action.payload;
         },
-        handleVgProportionsChange: (state, action: PayloadAction<React.FormEvent<HTMLInputElement>>) => {
+        handleVgProportionsChange: (state, action: PayloadAction<string>) => {
 
-            state.vgPropotion = +action.payload.currentTarget.value;
-            state.pgPropotion = 100 - +action.payload.currentTarget.value;
+            state.vgProportion = +action.payload;
+            state.pgProportion = 100 - +action.payload;
         },
-        handleNicotineTipeChange: (state, action: PayloadAction<React.FormEvent<HTMLSelectElement>>) => {
-            state.nicotineTipe = action.payload.currentTarget.value;
+        handleNicotineTypeChange: (state, action: PayloadAction<string>) => {
+            state.nicotineType = action.payload;
         },
-        handleNicotinePercentageChange: (state, action: PayloadAction<React.FormEvent<HTMLInputElement>>) => {
-            state.nicotinePercentage = +action.payload.currentTarget.value;
+        handleNicotinePercentageChange: (state, action: PayloadAction<string>) => {
+            state.nicotinePercentage = +action.payload;
         },
-        handleLiquidVolumeChange: (state, action: PayloadAction<React.FormEvent<HTMLInputElement>>) => {
-            if (!isNaN(+action.payload.currentTarget.value)) {
-                state.liquidVolume = +action.payload.currentTarget.value;
+        handleLiquidVolumeChange: (state, action: PayloadAction<string>) => {
+            if (!isNaN(+action.payload)) {
+                state.liquidVolume = +action.payload;
             }
             }
     },
@@ -50,7 +50,7 @@ export const baseSelectSlice = createSlice({
 
 export const {
     handlePgProportionsChange, handleVgProportionsChange,
-    handleNicotineTipeChange, handleNicotinePercentageChange,
+    handleNicotineTypeChange, handleNicotinePercentageChange,
     handleLiquidVolumeChange } = baseSelectSlice.actions
 
 export default baseSelectSlice.reducer

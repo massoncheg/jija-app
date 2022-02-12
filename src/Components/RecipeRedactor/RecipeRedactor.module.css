@@ -1,3 +1,17 @@
-.redactorWrapper{
-    font-family: Arial, Helvetica, sans-serif ;
+.redactorWrapper {
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+.classSas {
+    font-size: 60px;
+
+    position: relative;
+    display: block;
+    width: 25vw;
+
+
+    margin-left: auto;
+
+    margin-right: auto;
 }
