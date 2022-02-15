@@ -1,16 +1,16 @@
 html {
   font-family: Arial, Helvetica, sans-serif;
-  background-color:rgb(233, 233, 233);
+  background-color: rgb(233, 233, 233);
 }
 
 .appWrapper {
-display: grid;
- grid-template-areas: "h h h h" "c c c c";  
-grid-template-rows: 5vh 95vh; 
+  display: grid;
+  grid-template-areas: "h h h h""c c c c";
+  grid-template-rows: 5vh 95vh;
 
 }
 
 .appWrapperContent {
   grid-area: c;
-  background-color:rgb(233, 233, 233);
+  background-color: rgb(233, 233, 233);
 }

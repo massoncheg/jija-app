@@ -7,7 +7,7 @@ import cls from "../RedactorComponents.module.css"
 
 interface FlavoringSearchItemProps {
     addFlavoring: (id: number, event: React.FormEvent<HTMLButtonElement>) => void;
-
+    key: string;
     id: number;
     engName: string;
     rusName: string
@@ -38,7 +38,7 @@ export interface iDBFlavoring {
     recommendedPercentageDrops?: string
 }
 
-// Отображает поиск по аромотизаторам и позволяет добавить выбранную аромку к рецепту
+// Отображает поиск по ароматизаторам и позволяет добавить выбранную аромку к рецепту
 interface FlavoringsSearchProps {
     addFlavoring: (id: number, event: React.FormEvent<HTMLButtonElement>) => void;
 }
@@ -65,7 +65,7 @@ const FlavoringsSearch = ({ addFlavoring, }: FlavoringsSearchProps) => {
         };
     }
 
-    let searchResultsList = searchResults.map(item => <FlavoringSearchItem addFlavoring={addFlavoring} id={item.id} engName={item.engName} rusName={item.rusName} />)
+    let searchResultsList = searchResults.map(item => <FlavoringSearchItem addFlavoring={addFlavoring} key={item.id.toString()} id={item.id} engName={item.engName} rusName={item.rusName} />)
 
     return (
         <div className={cls.flavoringSearchWrapper}>

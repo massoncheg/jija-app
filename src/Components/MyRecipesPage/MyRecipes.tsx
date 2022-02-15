@@ -7,9 +7,9 @@ import { RecipeState, RootState } from "../../Store/store";
 import RecipeItem from "./RecipeItem/RecipeItem";
 
 
-const MyRecipes = () => {
+const MyRecipes = ({state}: {state: MyRecipesState}) => {
         
-    const state: MyRecipesState = useSelector((state: RootState) => state.recipes)
+    
     const dispatch = useDispatch()
     const recipeItems = state.savedRecipes
     return (

@@ -1,23 +1,24 @@
 .headerWrapper {
     background-color: darkgray;
-    font-size: 20px;
+    fontSize: 20px;
     text-align: end;
     grid-area: h;
 }
+
 .headerWrapper span {
-    padding-right: 15px; 
+    padding-right: 15px;
 }
+
 .headerWrapper a {
     text-decoration: none;
 
     margin-right: 15px;
 }
+
 .headerWrapper a:link {
     color: black;
 }
 
-.headerWrapper a:visited{
+.headerWrapper a:visited {
     color: black
 }
-
-  

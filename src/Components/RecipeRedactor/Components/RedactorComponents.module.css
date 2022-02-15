@@ -33,7 +33,7 @@
     border-radius: 1vw;
 }
 
-/* Поиск по аромотизаторам */
+/* Поиск по ароматизаторам */
 
 .flavoringSearchWrapper {
     background-color: rgb(255, 126, 158);
@@ -103,7 +103,7 @@
     border: 1px solid rgb(143, 0, 67);
     color: white;
     padding: 5px;
-    font-size: 16px;
+    fontSize: 16px;
     margin: 2px;
     border-radius: 5px;
 

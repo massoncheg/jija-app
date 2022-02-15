@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { BaseSelectState } from './baseSlice'
 import { FlavoringsSelectState, iSelectedFlavoring } from './flavoringsSlice'
+import { store } from '../../store'
 
 
 /* Функции для расчета объемов компонентов */
@@ -15,16 +16,16 @@ const calculator = {
         return flavoringsList.map(f => {
             return {
                 engName: f.flavoring.engName,
-                flavoringPrecent: f.flavoringPrecent,
-                flavoringVolume: (liquidVolume * (f.flavoringPrecent / 100)),
-                flavoringVolumeDrops: ((liquidVolume * (f.flavoringPrecent / 100)) * 33)
+                flavoringPercent: f.flavoringPercent,
+                flavoringVolume: (liquidVolume * (f.flavoringPercent / 100)),
+                flavoringVolumeDrops: ((liquidVolume * (f.flavoringPercent / 100)) * 33)
             }
         })
     },
     calculateOverallFlavorsVolume: (flavoringsList: iCalculatedFlavoring[]) => {
 
-        let overallVolume = flavoringsList.reduce((sum, item)=> sum + item.flavoringVolume, 0);
-        
+        let overallVolume = flavoringsList.reduce((sum, item) => sum + item.flavoringVolume, 0);
+
         return overallVolume
     },
     calculatePgVolume: (liquidVolume: number, pgProportion: number, NicotineVolume: number, overallFlavorsVolume: number) => { return liquidVolume * (pgProportion / 100) - NicotineVolume - overallFlavorsVolume }
@@ -32,7 +33,7 @@ const calculator = {
 
 interface iCalculatedFlavoring {
     engName: string,
-    flavoringPrecent: number,
+    flavoringPercent: number,
     flavoringVolume: number,
     flavoringVolumeDrops: number
 }
@@ -55,10 +56,19 @@ const initialState: DescriptionState = {
     selectedFlavorsVolumes: []
 }
 
-export const descriptionSlice = createSlice({   
+export const descriptionSlice = createSlice({
     name: 'description',
     initialState: initialState,
     reducers: {
+        setDescriptionState: (state, action: PayloadAction<DescriptionState>) => {
+            state.liquidVolume = action.payload.liquidVolume
+            state.pgVolume = action.payload.pgVolume
+            state.vgVolume = action.payload.vgVolume
+            state.nicotineVolume = action.payload.nicotineVolume
+            state.overallFlavorsVolume = action.payload.overallFlavorsVolume
+            state.selectedFlavorsVolumes = action.payload.selectedFlavorsVolumes
+            
+        },
         handleSubmit: (state, action: PayloadAction<{ baseState: BaseSelectState, flavoringsState: FlavoringsSelectState }>) => {
 
             const baseState = action.payload.baseState
@@ -70,22 +80,39 @@ export const descriptionSlice = createSlice({
             const selectedFlavorsVolumes = calculator.calculateFlavorsVolumes(liquidVolume, flavoringState.selectedFlavors);
             const overallFlavorsVolume = calculator.calculateOverallFlavorsVolume(selectedFlavorsVolumes);
             const pgVolume = calculator.calculatePgVolume(liquidVolume, baseState.pgProportion, nicotineVolume, overallFlavorsVolume);
-            
+
             state.liquidVolume = liquidVolume
             state.pgVolume = pgVolume
             state.vgVolume = vgVolume
             state.nicotineVolume = nicotineVolume
             state.overallFlavorsVolume = overallFlavorsVolume
             state.selectedFlavorsVolumes = selectedFlavorsVolumes
-           
-    
-        }        
+        },
+        /* handleSubmitSas: (state, action: PayloadAction<void>) => {
+
+            const baseState = store.getState().base
+            const flavoringState = store.getState().flavorings
+
+            const liquidVolume = baseState.liquidVolume;
+            const vgVolume = calculator.calculateVgVolume(liquidVolume, baseState.vgProportion);
+            const nicotineVolume = calculator.calculateNicotineVolume(liquidVolume, baseState.nicotineType, baseState.nicotinePercentage);
+            const selectedFlavorsVolumes = calculator.calculateFlavorsVolumes(liquidVolume, flavoringState.selectedFlavors);
+            const overallFlavorsVolume = calculator.calculateOverallFlavorsVolume(selectedFlavorsVolumes);
+            const pgVolume = calculator.calculatePgVolume(liquidVolume, baseState.pgProportion, nicotineVolume, overallFlavorsVolume);
+
+            state.liquidVolume = liquidVolume
+            state.pgVolume = pgVolume
+            state.vgVolume = vgVolume
+            state.nicotineVolume = nicotineVolume
+            state.overallFlavorsVolume = overallFlavorsVolume
+            state.selectedFlavorsVolumes = selectedFlavorsVolumes
+        } */
     },
 })
 
 
-export const {
-    handleSubmit
+export const { setDescriptionState,
+    handleSubmit, /* handleSubmitSas */
 } = descriptionSlice.actions
 
 export default descriptionSlice.reducer

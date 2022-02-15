@@ -22,7 +22,13 @@ export const baseSelectSlice = createSlice({
     name: 'baseSelect',
     initialState: initialState,
     reducers: {
-        
+        setBaseState: (state, action: PayloadAction<BaseSelectState>) => {
+            state.pgProportion = action.payload.pgProportion
+            state.vgProportion = action.payload.vgProportion
+            state.nicotineType = action.payload.nicotineType
+            state.nicotinePercentage = action.payload.nicotinePercentage
+            state.liquidVolume = action.payload.liquidVolume
+        },
         handlePgProportionsChange: (state, action: PayloadAction<string>) => {
 
             state.pgProportion = +action.payload
@@ -43,14 +49,15 @@ export const baseSelectSlice = createSlice({
             if (!isNaN(+action.payload)) {
                 state.liquidVolume = +action.payload;
             }
-            }
+        }
+
     },
 })
 
 
 export const {
-    handlePgProportionsChange, handleVgProportionsChange,
-    handleNicotineTypeChange, handleNicotinePercentageChange,
-    handleLiquidVolumeChange } = baseSelectSlice.actions
+    setBaseState, handlePgProportionsChange,
+    handleVgProportionsChange, handleNicotineTypeChange,
+    handleNicotinePercentageChange, handleLiquidVolumeChange } = baseSelectSlice.actions
 
 export default baseSelectSlice.reducer

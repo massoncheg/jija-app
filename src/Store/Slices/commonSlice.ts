@@ -14,10 +14,10 @@ export const commonSlice = createSlice({
     name: 'common',
     initialState: initialState,
     reducers: {
+        
+        handleNameChange: (state, action: PayloadAction<string>) => {
 
-        handleNameChange: (state, action: PayloadAction<React.FormEvent<HTMLInputElement>>) => {
-
-            state.RecipeName = action.payload.currentTarget.value
+            state.RecipeName = action.payload
 
         }
     }
