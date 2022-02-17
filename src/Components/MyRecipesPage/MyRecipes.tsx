@@ -14,11 +14,16 @@ const MyRecipes = ({ state }: { state: MyRecipesState }) => {
     const recipeItems = state.savedRecipes
     return (
         <div>
-        <div className='grid grid-cols-1 md:grid-cols-5 grid-rows-auto'>
-        {recipeItems.length !== 0 ? recipeItems.map((item) => <RecipeItem recipeName = {item.name} recipeDescription={item.description}/>) : <div>There are no recipes yet, try  to create one <Link to="/redactor">here</Link> :^)</div> }       
-        </div>
-        <div className='bg-bg2 mt-16'>
-            <button onClick={() => dispatch(handleLibraryClear())}>Очистить localStorage</button>
+        
+        {recipeItems.length !== 0 ? 
+            <div className='grid grid-cols-1 md:grid-cols-5 grid-rows-auto'>
+            {recipeItems.map((item) => <RecipeItem recipeName = {item.name} recipeDescription={item.description}/>)}
+            </div>
+            : <div className='text-center mx-auto my-4 text-lg'>There are no recipes yet, try  to create one <Link className='bg-bg2 px-2 text-white rounded-lg hover:bg-bg3' to="/redactor">here</Link> :^)</div> }       
+
+        
+        <div className='w-min text-white rounded-lg bg-bg2 mt-16 mx-auto hover:bg-bg3'>
+            <button className='w-60 px-2'  onClick={() => dispatch(handleLibraryClear())}>Очистить хранилище</button>
         </div>
         </div>
     )
