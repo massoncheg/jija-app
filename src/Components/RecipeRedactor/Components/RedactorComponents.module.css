@@ -62,7 +62,7 @@
 
 .dropdownContent::-webkit-scrollbar {
     min-width: 0.5rem;
-    /* ширина для вертикального скролла */
+    
     max-width: 0.75rem;
     background-color: transparent;
     
@@ -85,86 +85,14 @@
 
 }
 
-
-
-
-
-.flavoringSearchItembutton {
-    background-color: rgb(255, 126, 126);
-    border: 1px solid rgb(143, 0, 67);
-    color: white;
-    padding: 5px;
-    fontSize: 16px;
-    margin: 2px;
-    border-radius: 5px;
-
-}
-
 /* Поиск по ароматизаторам */
 
 /* Выбранные ароматизаторы */
-
-.selectedFlavorsArea {
-    background-color: rgb(246, 114, 128);
-    border: 2px solid rgb(80, 0, 0);
-    border-radius: 0.5vw;
-    margin-top: 1vh;
-    min-height: 5vh;
-}
-
-.flavoringItem {
-    max-width: 400px;
-
-    background-color: rgb(255, 126, 126);
-    border: 1px solid rgb(50, 0, 131);
-    border-radius: 5px;
-    margin: 5px;
-    padding: 5px;
-}
 
 /* Выбранные ароматизаторы */
 
 /* Поиск и выбор аромок */
 
 /* Описание рецепта */
-.recipeDescriptionWrapper {
-    vertical-align: middle;
-    display: inline-block;
-    background-color: rgb(190, 211, 255);
-    width: 25vw;
-    border: 2px solid rgb(16, 0, 41);
-    border-radius: 1vw;
-    margin: 10px;
-    padding: 10px;
-}
-
-.recipeDescriptionWrapper>div {
-    margin: 10px;
-}
-
-.flavorsBlock {
-    position: relative;
-    background-color: rgb(200, 190, 255);
-    border: 2px solid rgb(16, 0, 41);
-    min-height: 5vw;
-    border-radius: 1vw;
-    margin: 10px;
-}
-
-.flavorsBlock>div {
-    margin: 10px;
-}
 
 /* Описание рецепта */
-
-.saveButtonWrapper{
-    position: relative;
-    display: block;
-    width: 25vw;
-    margin-left: auto;
-    margin-right: auto;
-}
-.saveButton {
-    position: relative;
-    width: 25vw;
-}
