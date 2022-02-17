@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/jija-app/static/css/main.3708e6de.css",
-    "main.js": "/jija-app/static/js/main.00b502fb.js",
+    "main.css": "/jija-app/static/css/main.289db0ea.css",
+    "main.js": "/jija-app/static/js/main.e6d6864f.js",
     "static/js/787.844a7317.chunk.js": "/jija-app/static/js/787.844a7317.chunk.js",
     "index.html": "/jija-app/index.html",
-    "main.3708e6de.css.map": "/jija-app/static/css/main.3708e6de.css.map",
-    "main.00b502fb.js.map": "/jija-app/static/js/main.00b502fb.js.map",
+    "main.289db0ea.css.map": "/jija-app/static/css/main.289db0ea.css.map",
+    "main.e6d6864f.js.map": "/jija-app/static/js/main.e6d6864f.js.map",
     "787.844a7317.chunk.js.map": "/jija-app/static/js/787.844a7317.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3708e6de.css",
-    "static/js/main.00b502fb.js"
+    "static/css/main.289db0ea.css",
+    "static/js/main.e6d6864f.js"
   ]
 }
