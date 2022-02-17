@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from './Components/Header/Header';
 import MyRecipes from './Components/MyRecipesPage/MyRecipes'
 import RecipeRedactor from './Components/RecipeRedactor/RecipeRedactor';
-import cls from './App.module.css';
+
 import { useSelector } from 'react-redux';
 import { RootState } from './Store/store';
 
@@ -11,9 +11,9 @@ const App = () => {
   const state: RootState = useSelector((state: RootState) => state)
   return (
 
-    <div className={cls.appWrapper}>
-      <Header />
-      <div className={cls.appWrapperContent}>
+    <div className="bg-bg4 h-screen">
+      <Header/>
+      <div className="">
         <Routes>
           <Route path="/my-recipes" element={<MyRecipes state={state.recipes} />} />
           <Route path="/redactor" element={<RecipeRedactor

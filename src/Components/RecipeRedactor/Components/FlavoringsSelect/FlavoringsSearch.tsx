@@ -17,16 +17,20 @@ interface FlavoringSearchItemProps {
 const FlavoringSearchItem = ({ addFlavoring, id, engName, rusName }: FlavoringSearchItemProps) => {
 
     return (
-        <div className={cls.flavoringSearchItem}>
+
+        <button className='block w-full m-0'
+
+            onClick={(e) => addFlavoring(id, e)} title="Нажмите, чтобы добавить">
+            <div className='grid grid-cols-1 grid-rows-2 gap-0 justify-center 
+            h-min  
+            bg-bg3 border-2 border-bg1  rounded-xl'>
+                <div className=' justify-self-center self-center text-white w-35 border-b-2 border-bg1'>{engName || ""} </div>
+                
+                <div className=' justify-self-center self-center text-white w-35 '>{rusName || ""}</div>
+            </div>
+        </button>
 
 
-            <button onClick={(e) => addFlavoring(id, e)} title="Нажмите, чтобы добавить" className={cls.flavoringSearchItembutton}>
-                <span className={cls.flavoringName}>{engName || ""}</span>
-                <span> | </span>
-                <span className={cls.flavoringName}>{rusName || ""}</span>
-            </button>
-
-        </div>
     )
 }
 
@@ -68,12 +72,17 @@ const FlavoringsSearch = ({ addFlavoring, }: FlavoringsSearchProps) => {
     let searchResultsList = searchResults.map(item => <FlavoringSearchItem addFlavoring={addFlavoring} key={item.id.toString()} id={item.id} engName={item.engName} rusName={item.rusName} />)
 
     return (
-        <div className={cls.flavoringSearchWrapper}>
+        <div className='grid gap-1 p-2 grid-cols-1 justify-center bg-bg3 rounded-xl border-2 border-bg1'>
 
 
-            <input type="text" placeholder="Search" id="fSearch" onChange={searchChangeHandler} value={searchText} className={cls.flavoringSearchInput} />
-
-
+            <div className=' h-auto w-full justify-self-center rounded'>
+                <input type="text" placeholder="Search" id="fSearch"
+                    className='w-full rounded
+                    bg-bg2
+                    focus:outline-none focus:border-2 focus:border-bg1' 
+                    onChange={searchChangeHandler} value={searchText}
+                />
+            </div>
             <div className={cls.dropdownContent}>{searchResultsList}</div>
 
         </div>

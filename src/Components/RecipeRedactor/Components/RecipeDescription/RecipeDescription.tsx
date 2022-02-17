@@ -17,36 +17,42 @@ interface RecipeDescriptionProps {
 }
 
 
-const RecipeDescription = React.memo(({ baseState, flavoringsState, state}: RecipeDescriptionProps) => {
+const RecipeDescription = React.memo(({ baseState, flavoringsState, state }: RecipeDescriptionProps) => {
 
-    // const baseState: BaseSelectState = useSelector((state: RootState) => state.base)
-    // const flavoringsState: FlavoringsSelectState = useSelector((state: RootState) => state.flavorings)
-    // const descriptionState: DescriptionState = useSelector((state: RootState) => state.description)
     const dispatch = useDispatch();
 
     return (
-        <div className={cls.recipeDescriptionWrapper}>
+        <div className='redactor-component'>
+            <div className='grid gap-2 grid-cols-1'>
 
-            <button onClick={() => dispatch(handleSubmit({ baseState, flavoringsState }))}>Подтвердить</button>
-            {/* <button onClick={() => dispatch(handleSubmitSas())}>Подтвердить</button> */}
-            <div>Общий объем жидкости: {state.liquidVolume} мл</div>
-            <div>Нужно добавить пропиленгликоля: {state.pgVolume.toFixed(2)} мл</div>
-            <div>Нужно добавить глицерина: {state.vgVolume.toFixed(2)} мл</div>
-            <div>Нужно добавить никотина: {state.nicotineVolume.toFixed(2)} мл</div>
-            <div>Общий объем ароматизаторов: {state.overallFlavorsVolume.toFixed(2)} мл</div>
-            <div className={cls.flavorsBlock}>
-                <div>Объемы ароматизаторов:</div>
-                <div>{
-                    state.selectedFlavorsVolumes!.length !== 0 ?
-                        state.selectedFlavorsVolumes!.map(f => {
-                            return (
-                                <div key={f.engName}>
-                                    <span>{f.engName}</span>
-                                    <span> {f.flavoringPercent.toFixed(2)}%</span>
-                                    <span> {f.flavoringVolume.toFixed(2)} мл или</span>
-                                    <span> {f.flavoringVolumeDrops.toFixed(0)} кап</span>
-                                </div>)
-                        }) : <></>}
+                <button
+                    className='bg-bg3 rounded-xl border-2 border-bg1'
+                    onClick={() => dispatch(handleSubmit({ baseState, flavoringsState }))}>
+                    Подтвердить
+                </button>
+                <div className='p-2 bg-bg3 rounded-xl border-2 border-bg1'>
+                    <div>Общий объем жидкости: {state.liquidVolume} мл</div>
+                    <div>Нужно добавить пропиленгликоля: {state.pgVolume.toFixed(2)} мл</div>
+                    <div>Нужно добавить глицерина: {state.vgVolume.toFixed(2)} мл</div>
+                    <div>Нужно добавить никотина: {state.nicotineVolume.toFixed(2)} мл</div>
+                    <div>Общий объем ароматизаторов: {state.overallFlavorsVolume.toFixed(2)} мл</div>
+                </div>
+
+                <div className='p-2 bg-bg3 rounded-xl border-2 border-bg1'>
+                    <div>Объемы ароматизаторов:</div>
+                    <div>{
+                        state.selectedFlavorsVolumes!.length !== 0 ?
+                            state.selectedFlavorsVolumes!.map(f => {
+                                return (
+                                    <div className='p-2 bg-bg2 rounded-xl border-2 border-bg1 my-1'
+                                    key={f.engName}>
+                                        <span>{f.engName}</span>
+                                        <span> {f.flavoringPercent.toFixed(2)}%</span>
+                                        <span> {f.flavoringVolume.toFixed(2)} мл или</span>
+                                        <span> {f.flavoringVolumeDrops.toFixed(0)} кап</span>
+                                    </div>)
+                            }) : <></>}
+                    </div>
                 </div>
             </div>
         </div>

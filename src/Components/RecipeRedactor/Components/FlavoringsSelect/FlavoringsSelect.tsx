@@ -25,10 +25,26 @@ interface SelectedFlavoringItemProps {
 const SelectedFlavoringItem = ({ engName, flavoringPercent: flavoringPercent, onPercentChange: onPercentChange, onDelete, flavoringId }: SelectedFlavoringItemProps) => {
 
     return (
-        <div className={cls.flavoringItem}>
-            <span>{engName}</span>
-            <span><input type="number" min="0" max="50" value={flavoringPercent} onChange={(event) => onPercentChange(flavoringId, event)} /> %</span>
-            <span><button onClick={() => onDelete(flavoringId)}>x</button></span>
+        <div className='
+        grid grid-cols-3 grid-rows-1 justify-center content-center
+        bg-bg2 border-2 border-bg1 p-2 rounded-xl w-80'>
+            <div className='
+            text-center self-center'>
+                {engName}
+            </div>
+            <div className='justify-self-end self-center'>
+                <input type="number" min="0" max="50"
+                    className='text-center bg-bg3 rounded-lg
+                    focus:outline-none focus:border-2 focus:border-bg1'
+                    value={flavoringPercent}
+                    onChange={(event) => onPercentChange(flavoringId, event)}
+                /> %
+            </div>
+            <div className='justify-self-end self-center' >
+                <button
+                    className='bg-bg3 rounded-lg w-8 h-8'
+                    onClick={() => onDelete(flavoringId)}>x</button>
+            </div>
         </div>
     )
 }
@@ -37,28 +53,30 @@ interface FlavoringsSelectProps {
     state: FlavoringsSelectState;
 }
 
-const FlavoringsSelect = React.memo(({state}:FlavoringsSelectProps) => {
+const FlavoringsSelect = React.memo(({ state }: FlavoringsSelectProps) => {
 
     // const state: FlavoringsSelectState = useSelector((state: RootState) => state.flavorings)
     const dispatch = useDispatch();
 
     return (
-        <div className={cls.flavoringsSelectComponentWrapper}>
-            <FlavoringsSearch addFlavoring={(e) => dispatch(handleFlavoringSelect(e))} />
-            <div className={cls.selectedFlavorsArea}>
-                <div style={{ "fontSize": "20px", "color": "white", "margin": "0.5vh" } as React.CSSProperties}>Выбранные ароматизаторы:</div>
+        <div className='redactor-component'>
+            <div className="grid gap-2 grig-rows-2 grid-cols-1 content-center justify-center">
+                <FlavoringsSearch addFlavoring={(e) => dispatch(handleFlavoringSelect(e))} />
 
-                {state.selectedFlavors.map(
-                    (item: { flavoring: iDBFlavoring, flavoringPercent: number }) =>
-                        <SelectedFlavoringItem
-                            key={item.flavoring.id.toString()}
-                            engName={item.flavoring.engName}
-                            flavoringPercent={item.flavoringPercent}
-                            onPercentChange={
-                                (id: number, event: React.FormEvent<HTMLInputElement>) =>
-                                    dispatch(handlePercentageChange({ id, value: event.currentTarget.value }))}
-                            onDelete={(id: number) =>
-                                dispatch(handleFlavoringDelete(id))} flavoringId={item.flavoring.id} />)}
+                <div className='grid gap-1 p-2 grid-cols-1 bg-bg3 rounded-xl border-2 border-bg1'>
+                    <div className='text-xl w-80'>Выбранные ароматизаторы:</div>
+                    {state.selectedFlavors.map(
+                        (item: { flavoring: iDBFlavoring, flavoringPercent: number }) =>
+                            <SelectedFlavoringItem
+                                key={item.flavoring.id.toString()}
+                                engName={item.flavoring.engName}
+                                flavoringPercent={item.flavoringPercent}
+                                onPercentChange={
+                                    (id: number, event: React.FormEvent<HTMLInputElement>) =>
+                                        dispatch(handlePercentageChange({ id, value: event.currentTarget.value }))}
+                                onDelete={(id: number) =>
+                                    dispatch(handleFlavoringDelete(id))} flavoringId={item.flavoring.id} />)}
+                </div>
             </div>
         </div>
     )

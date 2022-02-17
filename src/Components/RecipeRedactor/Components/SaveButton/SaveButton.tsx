@@ -22,13 +22,15 @@ const SaveButton = React.memo(({ state }: SaveButtonProps) => {
 
 
     return (
-        <div className={cls.saveButtonWrapper}>
-            <input type="text" onChange={(event) => dispatch(handleNameChange(event.currentTarget.value))} value={state.common.RecipeName} />
-            <button className={cls.saveButton}
+        <div className='flex'>
+            <div className='bg-bg3 rounded mx-4 p-2'>
+                <span className='pr-2'>Название рецепта</span>
+                <input
+                className='bg-bg2 rounded pl-2'
+                type="text" onChange={(event) => dispatch(handleNameChange(event.currentTarget.value))} value={state.common.RecipeName} />
+            </div>
+            <button className='bg-bg3 rounded mx-4 px-2 py-0'
                 onClick={() => {
-                    // Меняем состояние: из текущих пропорций генерируем рецепт 
-                    dispatch(handleSubmit({ baseState: state.base, flavoringsState: state.flavorings }))
-                    // Используем состояние, но оно не изменено тк стейт обновится только после ререндера :( 
                     saveRecipeToLocalStorage(state);
                     dispatch(handleRecipeAdd(state))
                 }
