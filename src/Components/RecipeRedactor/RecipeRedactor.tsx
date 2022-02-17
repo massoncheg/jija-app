@@ -22,20 +22,25 @@ interface RecipeRedactorProps {
 const RecipeRedactor = React.memo(({ commonState, baseState, flavoringsState, descriptionState }: RecipeRedactorProps) => {
 
     const dispatch = useDispatch();
-    
+
 
     return (
-        <div className={cls.redactorWrapper}>
-            <div className={cls.redactorContentWrapper}>
+        <div className="text-stone-200 font-medium">
+            <div className="
+            w-full flex flex-wrap justify-end items-center 
+            bg-bg2 border-gray-200 px-2 sm:px-4 py-3.5 dark:bg-gray-800">
+            <SaveButton state={{
+                common: commonState,
+                base: baseState,
+                flavorings: flavoringsState,
+                description: descriptionState
+            }} />
+            </div>
+            <div className="grid gap-2 grid-cols-1 grid-rows-3 m-5  md:grid md:gap-3 md:grid-cols-3 md:grid-rows-1 content-center justify-items-center ">
                 <BaseSelect state={baseState} />
                 <FlavoringsSelect state={flavoringsState} />
                 <RecipeDescription state={descriptionState} baseState={baseState} flavoringsState={flavoringsState} />
-                <SaveButton state={{
-                    common: commonState,
-                    base: baseState,
-                    flavorings: flavoringsState,
-                    description: descriptionState
-                }} />
+
             </div>
         </div>
     )
