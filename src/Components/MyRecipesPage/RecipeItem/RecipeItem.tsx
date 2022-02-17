@@ -46,13 +46,13 @@ const RecipeItem = ({ recipeName, recipeDescription }: RecipeItemProps) => {
         }
         else if (elementFront && elementBack && elementFront.style.display !== "none") {
             elementFront.style.display = "none"
-            elementBack.style.display = 'block'
+            elementBack.style.display = 'flex'
         }
-    }
+}
 
     return (
-        <div className='h-min m-2 text-white bg-bg3 rounded-xl border-2 border-bg1'>
-            <div className='hidden w-65' id={recipeName + 'front'}>
+        <div title="Щелкните по рецепту, чтобы открыть" className='h-min w-min m-2 text-white bg-bg3 rounded-xl border-2 border-bg1'>
+            <div className='hidden w-60' id={recipeName + 'front'}>
                 <div className='bg-bg2 rounded-t-lg text-center'>{recipeName}</div>
                 <div className='text-left h-auto text-ellipsis m-2'>
                     <div className='p-2 bg-bg2 rounded-xl border-2 border-bg1'>
@@ -79,13 +79,15 @@ const RecipeItem = ({ recipeName, recipeDescription }: RecipeItemProps) => {
                         </div>
                     </div>
                 </div>
-                <button className='p-1 py-0 bg-bg2 rounded-xl border-2 border-bg1 my-1' onClick={() => loadRecipe(recipeName)}>Загрузить</button>
-                <button className='p-1 py-0 bg-bg2 rounded-xl border-2 border-bg1 my-1' onClick={() => dispatch(handleRecipeDelete(recipeName))}>Удалить</button>
-                <button className='p-1 py-0 bg-bg2 rounded-xl border-2 border-bg1 my-1' onClick={() => clickHandler(recipeName)}>Скрыть</button>
+                <div className='mx-auto'>
+                    <button className='p-1 py-0 bg-bg2 rounded-xl border-2 border-bg1 my-1' onClick={() => loadRecipe(recipeName)}>Загрузить</button>
+                    <button className='p-1 py-0 bg-bg2 rounded-xl border-2 border-bg1 my-1' onClick={() => dispatch(handleRecipeDelete(recipeName))}>Удалить</button>
+                    <button className='p-1 py-0 bg-bg2 rounded-xl border-2 border-bg1 my-1' onClick={() => clickHandler(recipeName)}>Скрыть</button>
+                </div>
             </div>
-            <div className='w-40 h-60' id={recipeName + 'back'}>
-                <button className='w-40 h-60' onClick={() => clickHandler(recipeName)}>
-                    <div className='text-center'>{recipeName}</div>
+            <div className='w-60 h-60 flex justify-center content-center' id={recipeName + 'back'}>
+                <button className='w-auto h-auto' onClick={() => clickHandler(recipeName)}>
+                    {recipeName}
                 </button>
             </div>
         </div>
