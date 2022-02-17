@@ -28,7 +28,7 @@ const RecipeRedactor = React.memo(({ commonState, baseState, flavoringsState, de
         <div className="text-stone-200 font-medium">
             <div className="
             w-full flex flex-wrap justify-end items-center 
-            bg-bg2 border-gray-200 px-2 sm:px-4 py-3.5 dark:bg-gray-800">
+            bg-bg2 border-gray-200 px-2 py-3.5">
             <SaveButton state={{
                 common: commonState,
                 base: baseState,

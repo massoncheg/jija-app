@@ -23,13 +23,13 @@ const SaveButton = React.memo(({ state }: SaveButtonProps) => {
 
     return (
         <div className='flex'>
-            <div className='bg-bg3 rounded mx-4 p-2'>
-                <span className='pr-2'>Название рецепта</span>
+            <div className='bg-bg3 rounded mx-auto p-2'>
+                <span className='flex pr-2'>Название рецепта</span>
                 <input
-                className='bg-bg2 rounded pl-2'
+                className='w-full box-border bg-bg2 rounded pl-2'
                 type="text" onChange={(event) => dispatch(handleNameChange(event.currentTarget.value))} value={state.common.RecipeName} />
             </div>
-            <button className='bg-bg3 rounded mx-4 px-2 py-0'
+            <button className='bg-bg3 rounded mx-4 px-1 py-0 overflow-hidden'
                 onClick={() => {
                     saveRecipeToLocalStorage(state);
                     dispatch(handleRecipeAdd(state))

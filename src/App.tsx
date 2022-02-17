@@ -6,15 +6,17 @@ import RecipeRedactor from './Components/RecipeRedactor/RecipeRedactor';
 
 import { useSelector } from 'react-redux';
 import { RootState } from './Store/store';
+import About from './Components/AboutPage/About';
 
 const App = () => {
   const state: RootState = useSelector((state: RootState) => state)
   return (
 
     <div className="bg-bg4 h-screen">
-      <Header/>
+      <Header />
       <div className="">
         <Routes>
+          <Route path="/about" element={<About />} />
           <Route path="/my-recipes" element={<MyRecipes state={state.recipes} />} />
           <Route path="/redactor" element={<RecipeRedactor
             commonState={state.common}
