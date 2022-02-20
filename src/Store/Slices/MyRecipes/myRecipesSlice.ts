@@ -1,4 +1,4 @@
-import { createSlice, current, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, current, PayloadAction } from '@reduxjs/toolkit';
 import deleteRecipeFromLocalStorage from '../../../Common/deleteRecipeFromLocalStorage';
 import { iDBFlavoring } from '../../../Components/RecipeRedactor/Components/FlavoringsSelect/FlavoringsSearch';
 import { RecipeState } from '../../store';
@@ -15,8 +15,8 @@ export interface MyRecipesState {
 }
 
 const getRecipes = () => {
-    let notParsedArr = localStorage.getItem('myRecipes')
-    let parsedArr: RecipeState[]
+    let notParsedArr = localStorage.getItem('myRecipes');
+    let parsedArr: RecipeState[];
     notParsedArr ? parsedArr = [...JSON.parse(notParsedArr)] : parsedArr = [];
     if (parsedArr.length !== 0) {
 
@@ -36,18 +36,29 @@ export const myRecipesSlice = createSlice({
     reducers: {
         handleRecipeAdd: (state, action: PayloadAction<RecipeState>) => {
 
-            if (!current(state.savedRecipes).find((item: SavedRecipeItem) => item.name === action.payload.common.RecipeName)) {
+            const isRecipeSavedIndex = current(state.savedRecipes).findIndex((item: SavedRecipeItem) => item.name === action.payload.common.RecipeName);
+
+            if (isRecipeSavedIndex === -1) {
                 const recipe: SavedRecipeItem = {
                     name: action.payload.common.RecipeName,
                     description: action.payload.description
                 }
                 state.savedRecipes.push(recipe)
             }
+            else if (isRecipeSavedIndex !== -1) {
+                const recipe: SavedRecipeItem = {
+                    name: action.payload.common.RecipeName,
+                    description: action.payload.description
+                }
+                let tmpArr = [...current(state.savedRecipes)];
+                tmpArr[isRecipeSavedIndex] = recipe;
+                state.savedRecipes = tmpArr
+            }
 
         },
         handleRecipeDelete: (state, action: PayloadAction<string>) => {
 
-            let tmpArr = [...current(state.savedRecipes)]
+            let tmpArr = [...current(state.savedRecipes)];
             tmpArr.splice(state.savedRecipes.findIndex((item) => item.name === action.payload), 1);
             state.savedRecipes = tmpArr;
             deleteRecipeFromLocalStorage(action.payload);
@@ -61,6 +72,6 @@ export const myRecipesSlice = createSlice({
 })
 export const { handleRecipeAdd, handleRecipeDelete, handleLibraryClear
 
-} = myRecipesSlice.actions
+} = myRecipesSlice.actions;
 
-export default myRecipesSlice.reducer
+export default myRecipesSlice.reducer;

@@ -16,28 +16,31 @@ interface SaveButtonProps {
 
 const SaveButton = React.memo(({ state }: SaveButtonProps) => {
 
-    
+
 
     const dispatch = useDispatch();
 
 
     return (
         <div className='flex'>
+
             <div className='bg-bg3 rounded mx-auto p-2'>
                 <span className='flex pr-2'>Название рецепта</span>
                 <input
-                className='w-full box-border bg-bg2 rounded pl-2'
-                type="text" onChange={(event) => dispatch(handleNameChange(event.currentTarget.value))} value={state.common.RecipeName} />
+                    className='w-full box-border bg-bg2 rounded pl-2'
+                    type="text" onChange={(event) => dispatch(handleNameChange(event.currentTarget.value))} value={state.common.RecipeName} />
             </div>
+            
             <button className='bg-bg3 rounded mx-4 px-1 py-0 overflow-hidden'
                 onClick={() => {
                     saveRecipeToLocalStorage(state);
                     dispatch(handleRecipeAdd(state))
                 }
-                }   
+                }
             >
                 Сохранить изменения
             </button>
+
         </div>
     )
 })
