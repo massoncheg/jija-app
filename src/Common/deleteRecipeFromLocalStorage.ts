@@ -1,9 +1,9 @@
-import { RecipeState } from "../Store/store";
+import { RedactorState} from "../Store/Slices/RecipeRedactor/redactorSlice";
 
 const deleteRecipeFromLocalStorage = (name: string) => {
 
     let notParsedArr = localStorage.getItem('myRecipes')
-    let parsedArr: RecipeState[]
+    let parsedArr: RedactorState[]
     notParsedArr ? parsedArr = [...JSON.parse(notParsedArr)] : parsedArr = [];
 
     if (parsedArr.length !== 0) {

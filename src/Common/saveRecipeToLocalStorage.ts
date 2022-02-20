@@ -1,9 +1,9 @@
-import { RecipeState } from "../Store/store";
+import { RedactorState} from "../Store/Slices/RecipeRedactor/redactorSlice";;
 
-const saveRecipeToLocalStorage = (state: RecipeState) => {
+const saveRecipeToLocalStorage = (state: RedactorState) => {
 
     let notParsedArr = localStorage.getItem('myRecipes')
-    let parsedArr: RecipeState[]
+    let parsedArr: RedactorState[]
     notParsedArr ? parsedArr = [...JSON.parse(notParsedArr)] : parsedArr = [];
 
     if (notParsedArr === null) {
@@ -15,7 +15,7 @@ const saveRecipeToLocalStorage = (state: RecipeState) => {
     }
 
     else if (parsedArr.length !== 0) {
-        const tmp = parsedArr.findIndex((item: RecipeState) => item.common.RecipeName === state.common.RecipeName)
+        const tmp = parsedArr.findIndex((item: RedactorState) => item.common.RecipeName === state.common.RecipeName)
         if (tmp !== -1) {
             alert('Изменения успешно сохранены')
             parsedArr[tmp] = state

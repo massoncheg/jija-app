@@ -6,7 +6,7 @@ import {
     handleLiquidVolumeChange
 } from "../../../../Store/Slices/RecipeRedactor/baseSlice";
 import { BaseSelectState } from "../../../../Store/Slices/RecipeRedactor/baseSlice";
-import { handleSubmit } from "../../../../Store/Slices/RecipeRedactor/descriptionSlice";
+import { handleSubmit } from "../../../../Store/Slices/RecipeRedactor/redactorSlice";
 import { RootState } from "../../../../Store/store";
 
 import cls from "../RedactorComponents.module.css"

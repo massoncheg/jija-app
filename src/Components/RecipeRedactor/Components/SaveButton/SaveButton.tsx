@@ -5,13 +5,14 @@ import { useSelector, useDispatch } from "react-redux";
 import saveRecipeToLocalStorage from "../../../../Common/saveRecipeToLocalStorage";
 import { handleNameChange } from "../../../../Store/Slices/commonSlice";
 import { handleRecipeAdd } from "../../../../Store/Slices/MyRecipes/myRecipesSlice";
-import { handleSubmit } from "../../../../Store/Slices/RecipeRedactor/descriptionSlice";
-import { RecipeState, RootState } from "../../../../Store/store";
+import { handleSubmit } from "../../../../Store/Slices/RecipeRedactor/redactorSlice";
+import { RedactorState } from "../../../../Store/Slices/RecipeRedactor/redactorSlice";
+import { RootState } from "../../../../Store/store";
 
 import cls from "../RedactorComponents.module.css"
 
 interface SaveButtonProps {
-    state: RecipeState;
+    state: RedactorState;
 }
 
 const SaveButton = React.memo(({ state }: SaveButtonProps) => {

@@ -34,7 +34,7 @@ const FlavoringSearchItem = ({ addFlavoring, id, engName, rusName }: FlavoringSe
     )
 }
 
-export interface iDBFlavoring {
+export interface DataBaseFlavoring {
     engName: string,
     rusName: string,
     id: number,
@@ -50,11 +50,11 @@ interface FlavoringsSearchProps {
 const FlavoringsSearch = ({ addFlavoring, }: FlavoringsSearchProps) => {
 
     const [searchText, setSearchText] = useState('');
-    const [searchResults, setSearchResults] = useState<iDBFlavoring[]>([]);
+    const [searchResults, setSearchResults] = useState<DataBaseFlavoring[]>([]);
 
-    const filterForSearch = (arr: iDBFlavoring[], val: string) => {
+    const filterForSearch = (arr: DataBaseFlavoring[], val: string) => {
         let i = 0;
-        return arr.filter(function callbackFn(item: iDBFlavoring) { return (item.engName.toLowerCase().includes(val.toLowerCase()) || item.rusName.toLowerCase().includes(val.toLowerCase())) }).slice(0, 15)
+        return arr.filter(function callbackFn(item: DataBaseFlavoring) { return (item.engName.toLowerCase().includes(val.toLowerCase()) || item.rusName.toLowerCase().includes(val.toLowerCase())) }).slice(0, 15)
     }
 
     const searchChangeHandler = (event: React.FormEvent<HTMLInputElement>): void => {

@@ -1,14 +1,14 @@
-import { RecipeState } from "../Store/store";
+import { RedactorState} from "../Store/Slices/RecipeRedactor/redactorSlice";;
 
 const loadRecipeFromLocalStorage = (name: string) => {
 
 
     let notParsedArr = localStorage.getItem('myRecipes')
-    let parsedArr: RecipeState[]
+    let parsedArr: RedactorState[]
     notParsedArr ? parsedArr = [...JSON.parse(notParsedArr)] : parsedArr = [];
     if (parsedArr.length !== 0) {
 
-        return parsedArr.find((item: RecipeState) => item.common.RecipeName === name)
+        return parsedArr.find((item: RedactorState) => item.common.RecipeName === name)
     }
     else { alert("Не удалось загрузить рецепт") 
         return undefined}

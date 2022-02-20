@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 import loadRecipeFromLocalStorage from "../../../Common/loadRecipeFromLocalStorage";
 import { handleNameChange } from "../../../Store/Slices/commonSlice";
 import { handleRecipeDelete } from "../../../Store/Slices/MyRecipes/myRecipesSlice";
-import { setBaseState } from "../../../Store/Slices/RecipeRedactor/baseSlice";
-import { DescriptionState, setDescriptionState } from "../../../Store/Slices/RecipeRedactor/descriptionSlice";
-import { setFlavoringsState } from "../../../Store/Slices/RecipeRedactor/flavoringsSlice";
-import { RecipeState } from "../../../Store/store";
+import { setBaseState } from "../../../Store/Slices/RecipeRedactor/redactorSlice";
+import { DescriptionState, setDescriptionState } from "../../../Store/Slices/RecipeRedactor/redactorSlice";
+import { setFlavoringsState } from "../../../Store/Slices/RecipeRedactor/redactorSlice";
+import { RedactorState} from "../../../Store/Slices/RecipeRedactor/redactorSlice";
 
 import cls from "./RecipeItem.module.css"
 
@@ -25,7 +25,7 @@ const RecipeItem = ({ recipeName, recipeDescription }: RecipeItemProps) => {
     const navigate = useNavigate();
 
     const loadRecipe = (name: string) => {
-        const loadedState: RecipeState | undefined = loadRecipeFromLocalStorage(name)
+        const loadedState: RedactorState| undefined = loadRecipeFromLocalStorage(name)
         if (loadedState !== undefined) {
             dispatch(setBaseState(loadedState.base))
             dispatch(setFlavoringsState(loadedState.flavorings))

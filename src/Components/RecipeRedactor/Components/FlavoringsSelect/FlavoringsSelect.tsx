@@ -1,13 +1,13 @@
 import React from "react";
 
-import FlavoringsSearch, { iDBFlavoring } from "./FlavoringsSearch";
+import FlavoringsSearch, { DataBaseFlavoring } from "./FlavoringsSearch";
 
 import cls from "../RedactorComponents.module.css"
-import { FlavoringsSelectState } from "../../../../Store/Slices/RecipeRedactor/flavoringsSlice";
+import { FlavoringsSelectState } from "../../../../Store/Slices/RecipeRedactor/redactorSlice";
 import {
     handleFlavoringSelect, handlePercentageChange,
     handleFlavoringDelete
-} from "../../../../Store/Slices/RecipeRedactor/flavoringsSlice";
+} from "../../../../Store/Slices/RecipeRedactor/redactorSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../Store/store";
 
@@ -66,7 +66,7 @@ const FlavoringsSelect = React.memo(({ state }: FlavoringsSelectProps) => {
                 <div className='grid gap-1 p-2 grid-cols-1 bg-bg3 rounded-xl border-2 border-bg1'>
                     <div className='text-xl w-80'>Выбранные ароматизаторы:</div>
                     {state.selectedFlavors.map(
-                        (item: { flavoring: iDBFlavoring, flavoringPercent: number }) =>
+                        (item: { flavoring: DataBaseFlavoring, flavoringPercent: number }) =>
                             <SelectedFlavoringItem
                                 key={item.flavoring.id.toString()}
                                 engName={item.flavoring.engName}

@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { CommonState } from "../../Store/Slices/commonSlice";
-import { BaseSelectState } from "../../Store/Slices/RecipeRedactor/baseSlice";
-import { DescriptionState, handleSubmit } from "../../Store/Slices/RecipeRedactor/descriptionSlice";
-import { FlavoringsSelectState } from "../../Store/Slices/RecipeRedactor/flavoringsSlice";
+import { BaseSelectState } from "../../Store/Slices/RecipeRedactor/redactorSlice";
+import { DescriptionState, handleSubmit } from "../../Store/Slices/RecipeRedactor/redactorSlice";
+import { FlavoringsSelectState } from "../../Store/Slices/RecipeRedactor/redactorSlice";
 import BaseSelect from "./Components/BaseSelect/BaseSelect";
 import FlavoringsSelect from "./Components/FlavoringsSelect/FlavoringsSelect";
 import RecipeDescription from "./Components/RecipeDescription/RecipeDescription";
@@ -20,9 +20,6 @@ interface RecipeRedactorProps {
 }
 
 const RecipeRedactor = React.memo(({ commonState, baseState, flavoringsState, descriptionState }: RecipeRedactorProps) => {
-
-    const dispatch = useDispatch();
-
 
     return (
         <div className="text-stone-200 font-medium">

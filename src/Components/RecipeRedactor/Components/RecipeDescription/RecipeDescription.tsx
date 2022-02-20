@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BaseSelectState } from "../../../../Store/Slices/RecipeRedactor/baseSlice";
-import { DescriptionState, handleSubmit } from "../../../../Store/Slices/RecipeRedactor/descriptionSlice";
-import { FlavoringsSelectState } from "../../../../Store/Slices/RecipeRedactor/flavoringsSlice";
+import { DescriptionState, handleSubmit } from "../../../../Store/Slices/RecipeRedactor/redactorSlice";
+import { FlavoringsSelectState } from "../../../../Store/Slices/RecipeRedactor/redactorSlice";
 import { RootState } from "../../../../Store/store";
 
 import cls from "../RedactorComponents.module.css"
@@ -27,7 +27,7 @@ const RecipeDescription = React.memo(({ baseState, flavoringsState, state }: Rec
 
                 <button
                     className='bg-bg3 rounded-xl border-2 border-bg1'
-                    onClick={() => dispatch(handleSubmit({ baseState, flavoringsState }))}>
+                    onClick={() => dispatch(handleSubmit())}>
                     Подтвердить
                 </button>
                 <div className='p-2 bg-bg3 rounded-xl border-2 border-bg1'>

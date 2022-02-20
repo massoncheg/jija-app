@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { BaseSelectState } from './baseSlice'
-import { FlavoringsSelectState, iSelectedFlavoring } from './flavoringsSlice'
+import { FlavoringsSelectState, SelectedFlavoring } from './redactorSlice'
 import { store } from '../../store'
-import calculator from '../../../Common/calculator'
+import {calculator} from '../../../Common/calculator'
 
-export interface iCalculatedFlavoring {
+export interface CalculatedFlavoring {
     engName: string,
     flavoringPercent: number,
     flavoringVolume: number,
@@ -17,7 +17,7 @@ export interface DescriptionState {
     vgVolume: number,
     nicotineVolume: number,
     overallFlavorsVolume: number,
-    selectedFlavorsVolumes: iCalculatedFlavoring[]
+    selectedFlavorsVolumes: CalculatedFlavoring[]
 }
 
 const initialState: DescriptionState = {

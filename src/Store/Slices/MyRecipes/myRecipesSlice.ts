@@ -1,8 +1,8 @@
 import { createSlice, current, PayloadAction } from '@reduxjs/toolkit';
 import deleteRecipeFromLocalStorage from '../../../Common/deleteRecipeFromLocalStorage';
-import { iDBFlavoring } from '../../../Components/RecipeRedactor/Components/FlavoringsSelect/FlavoringsSearch';
-import { RecipeState } from '../../store';
-import { DescriptionState } from '../RecipeRedactor/descriptionSlice';
+import { DataBaseFlavoring } from '../../../Components/RecipeRedactor/Components/FlavoringsSelect/FlavoringsSearch';
+import { RedactorState} from '../../Slices/RecipeRedactor/redactorSlice';
+import { DescriptionState } from '../RecipeRedactor/redactorSlice';
 
 export interface SavedRecipeItem {
     name: string,
@@ -16,11 +16,11 @@ export interface MyRecipesState {
 
 const getRecipes = () => {
     let notParsedArr = localStorage.getItem('myRecipes');
-    let parsedArr: RecipeState[];
+    let parsedArr: RedactorState[];
     notParsedArr ? parsedArr = [...JSON.parse(notParsedArr)] : parsedArr = [];
     if (parsedArr.length !== 0) {
 
-        return parsedArr.map((item: RecipeState) => ({ name: item.common.RecipeName, description: item.description }))
+        return parsedArr.map((item: RedactorState) => ({ name: item.common.RecipeName, description: item.description }))
     }
     else { return [] }
 
@@ -34,7 +34,7 @@ export const myRecipesSlice = createSlice({
     name: 'myRecipes',
     initialState: initialState,
     reducers: {
-        handleRecipeAdd: (state, action: PayloadAction<RecipeState>) => {
+        handleRecipeAdd: (state, action: PayloadAction<RedactorState>) => {
 
             const isRecipeSavedIndex = current(state.savedRecipes).findIndex((item: SavedRecipeItem) => item.name === action.payload.common.RecipeName);
 
