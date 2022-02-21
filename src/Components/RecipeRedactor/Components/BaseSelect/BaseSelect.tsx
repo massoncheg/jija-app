@@ -4,8 +4,8 @@ import {
     handlePgProportionsChange, handleVgProportionsChange,
     handleNicotineTypeChange, handleNicotinePercentageChange,
     handleLiquidVolumeChange
-} from "../../../../Store/Slices/RecipeRedactor/baseSlice";
-import { BaseSelectState } from "../../../../Store/Slices/RecipeRedactor/baseSlice";
+} from "../../../../Store/Slices/RecipeRedactor/redactorSlice";
+import { BaseSelectState } from "../../../../Store/Slices/RecipeRedactor/redactorSlice";
 import { handleSubmit } from "../../../../Store/Slices/RecipeRedactor/redactorSlice";
 import { RootState } from "../../../../Store/store";
 

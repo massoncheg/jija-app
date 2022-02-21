@@ -3,16 +3,16 @@ import { current } from "@reduxjs/toolkit";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import saveRecipeToLocalStorage from "../../../../Common/saveRecipeToLocalStorage";
-import { handleNameChange } from "../../../../Store/Slices/commonSlice";
+import { CommonState, handleNameChange } from "../../../../Store/Slices/RecipeRedactor/redactorSlice";
 import { handleRecipeAdd } from "../../../../Store/Slices/MyRecipes/myRecipesSlice";
 import { handleSubmit } from "../../../../Store/Slices/RecipeRedactor/redactorSlice";
 import { RedactorState } from "../../../../Store/Slices/RecipeRedactor/redactorSlice";
-import { RootState } from "../../../../Store/store";
+import { RootState, store } from "../../../../Store/store";
 
 import cls from "../RedactorComponents.module.css"
 
 interface SaveButtonProps {
-    state: RedactorState;
+    state: CommonState;
 }
 
 const SaveButton = React.memo(({ state }: SaveButtonProps) => {
@@ -29,13 +29,14 @@ const SaveButton = React.memo(({ state }: SaveButtonProps) => {
                 <span className='flex pr-2'>Название рецепта</span>
                 <input
                     className='w-full box-border bg-bg2 rounded pl-2'
-                    type="text" onChange={(event) => dispatch(handleNameChange(event.currentTarget.value))} value={state.common.RecipeName} />
+                    type="text" onChange={(event) => dispatch(handleNameChange(event.currentTarget.value))} value={state.RecipeName} />
             </div>
             
             <button className='bg-bg3 rounded mx-4 px-1 py-0 overflow-hidden'
                 onClick={() => {
-                    saveRecipeToLocalStorage(state);
-                    dispatch(handleRecipeAdd(state))
+                    dispatch(handleSubmit())
+                    saveRecipeToLocalStorage();
+                    dispatch(handleRecipeAdd(store.getState().redactor));
                 }
                 }
             >

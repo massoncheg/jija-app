@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BaseSelectState } from "../../../../Store/Slices/RecipeRedactor/baseSlice";
+import { BaseSelectState } from "../../../../Store/Slices/RecipeRedactor/redactorSlice";
 import { DescriptionState, handleSubmit } from "../../../../Store/Slices/RecipeRedactor/redactorSlice";
 import { FlavoringsSelectState } from "../../../../Store/Slices/RecipeRedactor/redactorSlice";
 import { RootState } from "../../../../Store/store";

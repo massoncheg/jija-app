@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { CommonState } from "../../Store/Slices/commonSlice";
+import { CommonState } from "../../Store/Slices/RecipeRedactor/redactorSlice";
 import { BaseSelectState } from "../../Store/Slices/RecipeRedactor/redactorSlice";
 import { DescriptionState, handleSubmit } from "../../Store/Slices/RecipeRedactor/redactorSlice";
 import { FlavoringsSelectState } from "../../Store/Slices/RecipeRedactor/redactorSlice";
@@ -26,12 +26,7 @@ const RecipeRedactor = React.memo(({ commonState, baseState, flavoringsState, de
             <div className="
             w-full flex flex-wrap justify-end items-center 
             bg-bg2 border-gray-200 px-2 py-3.5">
-            <SaveButton state={{
-                common: commonState,
-                base: baseState,
-                flavorings: flavoringsState,
-                description: descriptionState
-            }} />
+            <SaveButton state={commonState} />
             </div>
             <div className="grid gap-2 grid-cols-1 grid-rows-3 m-5  md:grid md:gap-3 md:grid-cols-3 md:grid-rows-1 content-center justify-items-center ">
                 <BaseSelect state={baseState} />

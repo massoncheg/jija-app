@@ -57,7 +57,7 @@ const initialState: RedactorState = {
         vgProportion: 50,
         nicotineType: 'Salt',
         nicotinePercentage: 20,
-        liquidVolume: 3
+        liquidVolume: 30
     },
     flavorings: {
         selectedFlavors: [],

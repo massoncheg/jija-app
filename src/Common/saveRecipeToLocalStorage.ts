@@ -1,6 +1,12 @@
-import { RedactorState} from "../Store/Slices/RecipeRedactor/redactorSlice";;
+import { current } from "@reduxjs/toolkit";
+import { RedactorState} from "../Store/Slices/RecipeRedactor/redactorSlice";
+import { store } from "../Store/store";
 
-const saveRecipeToLocalStorage = (state: RedactorState) => {
+const saveRecipeToLocalStorage = () => {
+
+    let state: RedactorState
+
+    state = store.getState().redactor
 
     let notParsedArr = localStorage.getItem('myRecipes')
     let parsedArr: RedactorState[]
@@ -31,6 +37,7 @@ const saveRecipeToLocalStorage = (state: RedactorState) => {
     else {
         alert("Не удалось сохранить рецепт")
     }
+    
 
 }
 export default saveRecipeToLocalStorage

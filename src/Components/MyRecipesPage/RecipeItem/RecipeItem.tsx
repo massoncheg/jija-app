@@ -2,16 +2,16 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import loadRecipeFromLocalStorage from "../../../Common/loadRecipeFromLocalStorage";
-import { handleNameChange } from "../../../Store/Slices/commonSlice";
+import { handleNameChange } from "../../../Store/Slices/RecipeRedactor/redactorSlice";
 import { handleRecipeDelete } from "../../../Store/Slices/MyRecipes/myRecipesSlice";
 import { setBaseState } from "../../../Store/Slices/RecipeRedactor/redactorSlice";
 import { DescriptionState, setDescriptionState } from "../../../Store/Slices/RecipeRedactor/redactorSlice";
 import { setFlavoringsState } from "../../../Store/Slices/RecipeRedactor/redactorSlice";
-import { RedactorState} from "../../../Store/Slices/RecipeRedactor/redactorSlice";
+import { RedactorState } from "../../../Store/Slices/RecipeRedactor/redactorSlice";
 
 import cls from "./RecipeItem.module.css"
 
-// Компонент принимает в себя параметры рецепта и выдает карточку с названием, картинкой и описанием рецепта
+// Компонент принимает в себя параметры рецепта и выдает карточку с названием и описанием рецепта
 
 interface RecipeItemProps {
     recipeName: string;
@@ -25,7 +25,7 @@ const RecipeItem = ({ recipeName, recipeDescription }: RecipeItemProps) => {
     const navigate = useNavigate();
 
     const loadRecipe = (name: string) => {
-        const loadedState: RedactorState| undefined = loadRecipeFromLocalStorage(name)
+        const loadedState: RedactorState | undefined = loadRecipeFromLocalStorage(name)
         if (loadedState !== undefined) {
             dispatch(setBaseState(loadedState.base))
             dispatch(setFlavoringsState(loadedState.flavorings))
@@ -39,25 +39,30 @@ const RecipeItem = ({ recipeName, recipeDescription }: RecipeItemProps) => {
         const elementFront = document.getElementById(id + 'front')
         const elementBack = document.getElementById(id + 'back')
 
-        console.log(elementFront)
-        console.log(elementBack)
 
         if (elementFront && elementBack && elementFront.style.display === "none") {
-            elementFront.style.display = "block"
+            elementFront.style.display = "flex"
             elementBack.style.display = 'none'
         }
         else if (elementFront && elementBack && elementFront.style.display !== "none") {
             elementFront.style.display = "none"
-            elementBack.style.display = 'flex'
+            elementBack.style.display = "block"
         }
     }
 
     return (
         <div title="Щелкните по рецепту, чтобы открыть"
-            className='h-min w-min m-2 text-white bg-bg3 rounded-xl border-2 border-bg1'>
+            className='m-2 flex justify-center content-center overflow-hidden text-white bg-bg3 rounded-xl border-2 border-bg1'>
 
-            <div className='hidden w-60' id={recipeName + 'front'}>
+            <div className='hidden flex-col w-full justify-center content-center' style={{ display: "none" }} id={recipeName + 'front'}>
+
                 <div className='bg-bg2 rounded-t-lg text-center'>{recipeName}</div>
+
+                <div className='flex justify-center'>
+                    <button className='p-1 py-0 bg-bg2 rounded-xl border-2 border-bg1 my-1' onClick={() => loadRecipe(recipeName)}>Загрузить</button>
+                    <button className='p-1 py-0 bg-bg2 rounded-xl border-2 border-bg1 my-1' onClick={() => dispatch(handleRecipeDelete(recipeName))}>Удалить</button>
+                    <button className='p-1 py-0 bg-bg2 rounded-xl border-2 border-bg1 my-1' onClick={() => handleRecipeOpen(recipeName)}>Скрыть</button>
+                </div>
 
                 <div className='text-left h-auto text-ellipsis m-2'>
                     <div className='p-2 bg-bg2 rounded-xl border-2 border-bg1'>
@@ -86,18 +91,12 @@ const RecipeItem = ({ recipeName, recipeDescription }: RecipeItemProps) => {
                     </div>
                 </div>
 
-                <div className='mx-auto'>
-                    <button className='p-1 py-0 bg-bg2 rounded-xl border-2 border-bg1 my-1' onClick={() => loadRecipe(recipeName)}>Загрузить</button>
-                    <button className='p-1 py-0 bg-bg2 rounded-xl border-2 border-bg1 my-1' onClick={() => dispatch(handleRecipeDelete(recipeName))}>Удалить</button>
-                    <button className='p-1 py-0 bg-bg2 rounded-xl border-2 border-bg1 my-1' onClick={() => handleRecipeOpen(recipeName)}>Скрыть</button>
-                </div>
+
             </div>
 
-            <div className='w-60 h-60 flex justify-center content-center' id={recipeName + 'back'}>
-                <button className='flex w-auto h-auto' onClick={() => handleRecipeOpen(recipeName)}>
-                    {recipeName}
-                </button>
-            </div>
+            <button className='block w-full h-60 text-center' onClick={() => handleRecipeOpen(recipeName)} id={recipeName + 'back'}>
+                {recipeName}
+            </button>
 
         </div>
     )

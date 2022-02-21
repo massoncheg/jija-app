@@ -17,7 +17,7 @@ const MyRecipes = ({ state }: { state: MyRecipesState }) => {
         
         {recipeItems.length !== 0 ? 
             <div className='grid grid-cols-1 md:grid-cols-5 grid-rows-auto'>
-            {recipeItems.map((item) => <RecipeItem recipeName = {item.name} recipeDescription={item.description}/>)}
+            {recipeItems.map((item) => <RecipeItem recipeName = {item.name} key={item.name} recipeDescription={item.description}/>)}
             </div>
             : <div className='text-center mx-auto my-4 text-lg'>There are no recipes yet, try  to create one <Link className='bg-bg2 px-2 text-white rounded-lg hover:bg-bg3' to="/redactor">here</Link> :^)</div> }       
 
