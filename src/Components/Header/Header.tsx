@@ -1,7 +1,14 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { handleLanguageSelect } from "../../Store/Slices/Global/globalSlice";
 
-const Header = () => {
+interface HeaderProps {
+    language: string;
+}
+
+const Header = ({ language }: HeaderProps) => {
+
     const clickHandler = () => {
         const element = document.getElementById('navMenu')
         console.log(element)
@@ -12,6 +19,9 @@ const Header = () => {
             element.style.display = "none"
         }
     }
+
+    const dispatch = useDispatch();
+
     return (
         <header
             className="bg-bg1 border-gray-200 px-2 sm:px-4 py-3.5">
@@ -35,19 +45,40 @@ const Header = () => {
                     <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-base md:font-medium text-gray-400 ">
                         <li>
                             <NavLink to={"/my-recipes"}
-                                className="block py-2 pr-4 pl-3 hover:text-white md:hover:bg-transparent border-gray-700">My recipes</NavLink>
+                                className="block py-2 pr-4 pl-3 hover:text-white md:hover:bg-transparent border-gray-700">
+                                {language === 'ru' ?
+                                    "Мои рецепты"
+                                    : "My recipes"
+                                }
+
+                            </NavLink>
                         </li>
                         <li>
                             <NavLink to={"/redactor"}
                                 className="block py-2 pr-4 pl-3 hover:text-white md:hover:bg-transparent border-gray-700">
-                                New recipe
+                                {language === 'ru' ?
+                                    "Редактор"
+                                    : "Redactor"
+                                }
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to={"/about"}
                                 className="block py-2 pr-4 pl-3 hover:text-white md:hover:bg-transparent border-gray-700">
-                                About
+                                {language === 'ru' ?
+                                    "О проекте"
+                                    : "About"
+                                }
                             </NavLink>
+                        </li>
+                        <li className='flex content-center'>
+                            <select value={language} onChange={(event) => dispatch(handleLanguageSelect(event.currentTarget.value))}
+                                className='
+                            bg-bg2 font-medium w-min px-2 text-center rounded 
+                            focus:outline-none focus:border-2 focus:border-bg1'>
+                                <option value="ru">RU</option>
+                                <option value="en">EN</option>
+                            </select>
                         </li>
                     </ul>
                 </nav>

@@ -13,16 +13,17 @@ const App = () => {
   return (
 
     <div id="app" className="bg-bg4 h-screen">
-      <Header />
+      <Header language={state.global.language}/>
       <main className="">
         <Routes>
-          <Route path="/about" element={<About />} />
-          <Route path="/my-recipes" element={<MyRecipes state={state.recipes} />} />
+          <Route path="/about" element={<About language={state.global.language}/>} />
+          <Route path="/my-recipes" element={<MyRecipes state={state.recipes} language={state.global.language}/>} />
           <Route path="/redactor" element={<RecipeRedactor
             commonState={state.redactor.common}
             baseState={state.redactor.base}
             flavoringsState={state.redactor.flavorings}
             descriptionState={state.redactor.description}
+            language={state.global.language}
           />}
           />
         </Routes>

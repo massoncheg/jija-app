@@ -51,6 +51,7 @@ const SelectedFlavoringItem = ({ engName, flavoringPercent: flavoringPercent, on
 
 interface FlavoringsSelectProps {
     state: FlavoringsSelectState;
+    language: string;
 }
 
 const FlavoringsSelect = React.memo(({ state }: FlavoringsSelectProps) => {

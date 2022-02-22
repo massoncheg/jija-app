@@ -16,22 +16,22 @@ interface RecipeRedactorProps {
     baseState: BaseSelectState;
     flavoringsState: FlavoringsSelectState;
     descriptionState: DescriptionState;
+    language: string;
 
 }
 
-const RecipeRedactor = React.memo(({ commonState, baseState, flavoringsState, descriptionState }: RecipeRedactorProps) => {
+const RecipeRedactor = React.memo(({ commonState, baseState, flavoringsState, descriptionState, language }: RecipeRedactorProps) => {
 
     return (
-        <div className="text-stone-200 font-medium">
+        <div className="text-stone-200 font-medium bg-bg4">
             <div className="
-            w-full flex flex-wrap justify-end items-center 
-            bg-bg2 border-gray-200 px-2 py-3.5">
-            <SaveButton state={commonState} />
+                w-screen flex flex-wrap justify-end items-center bg-bg2 border-gray-200 px-2 py-3.5">
+                <SaveButton state={commonState} language={language}/>
             </div>
             <div className="grid gap-2 grid-cols-1 grid-rows-3 m-5  md:grid md:gap-3 md:grid-cols-3 md:grid-rows-1 content-center justify-items-center ">
-                <BaseSelect state={baseState} />
-                <FlavoringsSelect state={flavoringsState} />
-                <RecipeDescription state={descriptionState} baseState={baseState} flavoringsState={flavoringsState} />
+                <BaseSelect state={baseState} language={language}/>
+                <FlavoringsSelect state={flavoringsState} language={language}/>
+                <RecipeDescription state={descriptionState} baseState={baseState} flavoringsState={flavoringsState} language={language}/>
 
             </div>
         </div>

@@ -14,6 +14,7 @@ interface RecipeDescriptionProps {
     baseState: BaseSelectState;
     flavoringsState: FlavoringsSelectState;
     state: DescriptionState;
+    language: string;
 }
 
 

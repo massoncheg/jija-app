@@ -52,9 +52,9 @@ const RecipeItem = ({ recipeName, recipeDescription }: RecipeItemProps) => {
 
     return (
         <div title="Щелкните по рецепту, чтобы открыть"
-            className='m-2 flex justify-center content-center overflow-hidden text-white bg-bg3 rounded-xl border-2 border-bg1'>
+            className='m-1 flex  lg:w-1/5 md:w-1/4 h-min justify-center overflow-hidden text-white bg-bg3 rounded-xl border-2 border-bg1'>
 
-            <div className='hidden flex-col w-full justify-center content-center' style={{ display: "none" }} id={recipeName + 'front'}>
+            <div className='hidden self-start flex-col w-full justify-center content-center' style={{ display: "none" }} id={recipeName + 'front'}>
 
                 <div className='bg-bg2 rounded-t-lg text-center'>{recipeName}</div>
 
@@ -64,13 +64,22 @@ const RecipeItem = ({ recipeName, recipeDescription }: RecipeItemProps) => {
                     <button className='p-1 py-0 bg-bg2 rounded-xl border-2 border-bg1 my-1' onClick={() => handleRecipeOpen(recipeName)}>Скрыть</button>
                 </div>
 
-                <div className='text-left h-auto text-ellipsis m-2'>
-                    <div className='p-2 bg-bg2 rounded-xl border-2 border-bg1'>
-                        <div>Общий объем жидкости: {recipeDescription.liquidVolume}мл</div>
-                        <div>Нужно добавить пропиленгликоля: {recipeDescription.pgVolume.toFixed(2)}мл</div>
-                        <div>Нужно добавить глицерина: {recipeDescription.vgVolume.toFixed(2)}мл</div>
-                        <div>Нужно добавить никотина: {recipeDescription.nicotineVolume.toFixed(2)}мл</div>
-                        <div>Общий объем ароматизаторов: {recipeDescription.overallFlavorsVolume.toFixed(2)}мл</div>
+                <div className='flex flex-wrap flex-col justify-center text-left h-auto text-ellipsis m-2'>
+                    <div className='flex flex-wrap flex-row p-2  bg-bg2 rounded-xl border-2 border-bg1'>
+                        <div>Общий объем жидкости: </div>
+                        <div className='w-min px-1 mx-1 mb-2 rounded-md bg-bg3'>{recipeDescription.liquidVolume}мл</div>
+
+                        <div>Нужно добавить пропиленгликоля: </div>
+                        <div className='w-min px-1 mx-1 mb-2 rounded-md bg-bg3'>{recipeDescription.pgVolume.toFixed(2)}мл</div>
+                        
+                        <div>Нужно добавить глицерина: </div>
+                        <div className='w-min px-1 mx-1 mb-2 rounded-md bg-bg3'>{recipeDescription.vgVolume.toFixed(2)}мл</div>
+                        
+                        <div>Нужно добавить никотина: </div>
+                        <div className='w-min px-1 mx-1 mb-2 rounded-md bg-bg3'>{recipeDescription.nicotineVolume.toFixed(2)}мл</div>
+                        
+                        <div>Общий объем ароматизаторов: </div>
+                        <div className='w-min px-1 mx-1 mb-2 rounded-md bg-bg3'>{recipeDescription.overallFlavorsVolume.toFixed(2)}мл</div>
                     </div>
 
                     <div className='p-2 bg-bg3 rounded-xl border-2 border-bg1 mt-2'>
