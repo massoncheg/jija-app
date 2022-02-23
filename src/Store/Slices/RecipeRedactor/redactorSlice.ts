@@ -111,7 +111,7 @@ export const redactorSlice = createSlice({
             state.base.nicotinePercentage = +action.payload;
         },
         handleLiquidVolumeChange: (state, action: PayloadAction<string>) => {
-            if (!isNaN(+action.payload)) {
+            if (!isNaN(+action.payload) && +action.payload < 99999) {
                 state.base.liquidVolume = +action.payload;
             }
         },
@@ -145,10 +145,11 @@ export const redactorSlice = createSlice({
         },
 
         handlePercentageChange: (state, action: PayloadAction<{ id: number, value: string }>) => {
-
             const indexPercentToChange = state.flavorings.selectedFlavors.findIndex((item: SelectedFlavoring) => item.flavoring.id === Number(action.payload.id));
             state.flavorings.selectedFlavors[indexPercentToChange] = { ...state.flavorings.selectedFlavors[indexPercentToChange], flavoringPercent: +action.payload.value };
-
+            if (state.flavorings.selectedFlavors[indexPercentToChange].flavoringPercent > 50){
+                state.flavorings.selectedFlavors[indexPercentToChange] = { ...state.flavorings.selectedFlavors[indexPercentToChange], flavoringPercent: 50 };
+            }
         },
 
         handleFlavoringDelete: (state, action: PayloadAction<number>) => {

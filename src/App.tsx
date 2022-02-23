@@ -12,9 +12,9 @@ const App = () => {
   const state: RootState = useSelector((state: RootState) => state)
   return (
 
-    <div id="app" className="bg-bg4 h-screen">
+    <div id="app" className="bg-bg4 min-h-screen">
       <Header language={state.global.language}/>
-      <main className="">
+      <main className="min-h-max">
         <Routes>
           <Route path="/about" element={<About language={state.global.language}/>} />
           <Route path="/my-recipes" element={<MyRecipes state={state.recipes} language={state.global.language}/>} />

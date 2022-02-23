@@ -960,9 +960,9 @@ module.exports = {
         '.redactor-component': {
           display: 'flex',
           alignItems: 'center',
-          width: 'auto',
-          maxWidth: '100%',
-          height: 'min-content',
+          justifySelf: 'center',
+          alignSelf: 'center',
+          height: 'max-content',
           padding: '0.75rem',
 
           backgroundColor: '#283593',

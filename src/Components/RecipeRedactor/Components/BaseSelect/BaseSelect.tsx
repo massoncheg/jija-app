@@ -24,9 +24,9 @@ const BaseSelect = React.memo(({ state, language }: BaseSelectProps) => {
 
 
     return (
-        <div className="redactor-component">
+        <div className="flex bg-bg2 w-full h-full py-4 rounded-lg content-center justify-center">
 
-            <div className=" grid gap-1 grid-cols-2 grid-rows-6 content-center justify-center mx-auto text-center">
+            <div className="grid min-w-full px-4 gap-2 grid-cols-2 grid-rows-6 content-center justify-center text-center">
                 <div className=" self-start col-span-2 p-2 bg-bg3 rounded-xl border-2 border-bg1">
                     Выберите пропорции жидкости:
                 </div>
@@ -116,7 +116,13 @@ const BaseSelect = React.memo(({ state, language }: BaseSelectProps) => {
 
                 </div>
                 <div className="col-span-2 grid grid-cols-2 grid-rows-1 items-center bg-bg3 rounded-xl border-2 border-bg1">
-                    <div>Выберите объем жидкости</div>
+                    <div>
+                        {language === 'ru' ?
+                            "Выберите объем жидкости:"
+                            : "Choose a liquid volume"
+                        }
+
+                    </div>
                     <div>
                         <input type='number' min="0" max='99999'
                             className="
@@ -125,7 +131,7 @@ const BaseSelect = React.memo(({ state, language }: BaseSelectProps) => {
                             value={state.liquidVolume || ""}
                             onChange={(event) => dispatch(handleLiquidVolumeChange(event.currentTarget.value))}
                         />
-                        <span> мл</span>
+                        <span className="ml-1">{language === "ru" ? "мл" : "ml"}</span>
                     </div>
                 </div>
             </div>
