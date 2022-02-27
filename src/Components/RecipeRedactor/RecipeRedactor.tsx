@@ -17,7 +17,6 @@ interface RecipeRedactorProps {
     flavoringsState: FlavoringsSelectState;
     descriptionState: DescriptionState;
     language: string;
-
 }
 
 const RecipeRedactor = React.memo(({ commonState, baseState, flavoringsState, descriptionState, language }: RecipeRedactorProps) => {
@@ -31,7 +30,7 @@ const RecipeRedactor = React.memo(({ commonState, baseState, flavoringsState, de
             <div className="flex flex-col content-center min-h-full gap-2 m-5 text-base md:flex-row md:gap-3 md:text-lg justify-items-center ">
                 <BaseSelect state={baseState} language={language} />
                 <FlavoringsSelect state={flavoringsState} language={language} />
-                <RecipeDescription state={descriptionState} baseState={baseState} flavoringsState={flavoringsState} language={language} />
+                <RecipeDescription state={descriptionState} baseState={baseState} flavoringsState={flavoringsState} language={language} changeStatus={commonState.changeStatus}/>
 
             </div>
         </div>

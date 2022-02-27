@@ -15,19 +15,20 @@ interface RecipeDescriptionProps {
     flavoringsState: FlavoringsSelectState;
     state: DescriptionState;
     language: string;
+    changeStatus: boolean;
 }
 
 
-const RecipeDescription = React.memo(({ baseState, flavoringsState, state, language }: RecipeDescriptionProps) => {
+const RecipeDescription = React.memo(({ baseState, flavoringsState, state, language, changeStatus}: RecipeDescriptionProps) => {
 
     const dispatch = useDispatch();
 
     return (
         <div className="w-full h-full p-4 rounded-lg bg-bg2">
-            <div className='grid grid-cols-1 gap-2'>
+            <div className='flex flex-col gap-2'>
 
-                <button
-                    className='border-2 bg-bg3 rounded-xl border-bg1'
+                {changeStatus ? <button
+                    className='p-2 font-medium border-2 animate-pulse bg-bg3 rounded-xl border-bg1 focus:outline-none focus:bg-bg1 hover:bg-bg1'
                     onClick={() => dispatch(handleSubmit())}
                 >
                     {language === "ru" ?
@@ -35,6 +36,16 @@ const RecipeDescription = React.memo(({ baseState, flavoringsState, state, langu
                         : "Calculate"
                     }
                 </button>
+                :
+                <button
+                    className='p-2 font-medium border-2 bg-bg3 rounded-xl border-bg1 focus:outline-none focus:bg-bg1 hover:bg-bg1'
+                    onClick={() => dispatch(handleSubmit())}
+                >
+                    {language === "ru" ?
+                        "Рассчитать"
+                        : "Calculate"
+                    }
+                </button>}
                 {language === "ru" ?
                     <div className='flex flex-col p-2 border-2 bg-bg3 rounded-xl border-bg1'>
                         <div>Общий объем жидкости: {state.liquidVolume} мл</div>

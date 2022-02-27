@@ -6,6 +6,7 @@ import tpa from "../../../Common/TpaFlavorsList"
 
 export interface CommonState {
     RecipeName: string;
+    changeStatus: boolean;
 }
 
 export interface BaseSelectState {
@@ -50,7 +51,8 @@ export interface RedactorState {
 
 const initialState: RedactorState = {
     common: {
-        RecipeName: 'New recipe'
+        RecipeName: 'New recipe',
+        changeStatus: false
     },
     base: {
         pgProportion: 50,
@@ -84,6 +86,11 @@ export const redactorSlice = createSlice({
             state.common.RecipeName = action.payload
 
         },
+        setChangesStatusFalse: (state, action: PayloadAction<string>) => {
+
+            state.common.changeStatus = false;
+
+        },
 
         // Конфигурация базы 
 
@@ -98,21 +105,31 @@ export const redactorSlice = createSlice({
 
             state.base.pgProportion = +action.payload
             state.base.vgProportion = 100 - +action.payload;
+
+            state.common.changeStatus = true
         },
         handleVgProportionsChange: (state, action: PayloadAction<string>) => {
 
             state.base.vgProportion = +action.payload;
             state.base.pgProportion = 100 - +action.payload;
+
+            state.common.changeStatus = true
         },
         handleNicotineTypeChange: (state, action: PayloadAction<string>) => {
             state.base.nicotineType = action.payload;
+
+            state.common.changeStatus = true
         },
         handleNicotinePercentageChange: (state, action: PayloadAction<string>) => {
             state.base.nicotinePercentage = +action.payload;
+
+            state.common.changeStatus = true
         },
         handleLiquidVolumeChange: (state, action: PayloadAction<string>) => {
             if (!isNaN(+action.payload) && +action.payload < 99999) {
                 state.base.liquidVolume = +action.payload;
+
+                state.common.changeStatus = true
             }
             if (+action.payload < 0) {
                 state.base.liquidVolume = 0;
@@ -126,11 +143,11 @@ export const redactorSlice = createSlice({
         },
 
         handleFlavoringSelect: (state, action: PayloadAction<number>) => {
-            if (/* Здесь проверяем есть ли вообще аромки в списке, что бы не было ошибок при проверке на повторы */
+            if (
+                /* Здесь проверяем есть ли вообще аромки в списке, что бы не было ошибок при проверке на повторы */
                 state.flavorings.selectedFlavors.length === 0
 
                 /* Здесь проверяем есть ли уже эта аромка в списке*/
-
                 || !state.flavorings.selectedFlavors.map((item) => item.flavoring.id).includes(action.payload)
             ) {
 
@@ -142,6 +159,7 @@ export const redactorSlice = createSlice({
                             flavoringPercent: 1
                         }
                     )
+                    state.common.changeStatus = true 
                 }
 
             }
@@ -153,6 +171,7 @@ export const redactorSlice = createSlice({
             if (state.flavorings.selectedFlavors[indexPercentToChange].flavoringPercent > 50) {
                 state.flavorings.selectedFlavors[indexPercentToChange] = { ...state.flavorings.selectedFlavors[indexPercentToChange], flavoringPercent: 50 };
             }
+            state.common.changeStatus = true 
         },
 
         handleFlavoringDelete: (state, action: PayloadAction<number>) => {
@@ -161,6 +180,8 @@ export const redactorSlice = createSlice({
             let tmpArr = [...current(state.flavorings.selectedFlavors)]
             tmpArr.splice(indexFlavoringToDelete, 1);
             state.flavorings.selectedFlavors = tmpArr;
+            
+            state.common.changeStatus = true 
 
         },
 
@@ -180,13 +201,15 @@ export const redactorSlice = createSlice({
             const result = calculateDescription(state.base, state.flavorings)
 
             state.description = { ...result }
+
+            state.common.changeStatus = false
         },
 
     },
 })
 
 export const {
-    handleNameChange
+    handleNameChange, setChangesStatusFalse
 } = redactorSlice.actions
 
 export const {

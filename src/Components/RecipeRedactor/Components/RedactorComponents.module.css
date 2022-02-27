@@ -13,6 +13,9 @@
 .rangeSlider:focus::-webkit-slider-runnable-track{
     background: #080070;
 }
+.rangeSlider:hover::-webkit-slider-runnable-track{
+    background: #080070;
+}
 .rangeSlider::-webkit-slider-runnable-track {
 
     background: #283593;

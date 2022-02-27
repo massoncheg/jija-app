@@ -55,7 +55,7 @@ const FlavoringsSearch = ({ addFlavoring, language }: FlavoringsSearchProps) => 
                     className='w-full px-2 border-none rounded bg-bg2 focus:outline-none focus:bg-bg1'
                     onChange={searchChangeHandler} value={searchText}
                 />
-                <button className='w-8 ml-2 text-center rounded bg-bg2' onClick={() => isOpen ? setIsOpen(false) : setIsOpen(true)}>{!isOpen ? "▼" : "▲"}</button>
+                <button className='w-8 ml-2 text-center rounded bg-bg2 focus:outline-none focus:bg-bg1 hover:bg-bg1' onClick={() => isOpen ? setIsOpen(false) : setIsOpen(true)}>{!isOpen ? "▼" : "▲"}</button>
             </div>
             {isOpen ? <div className={cls.dropdownContent}>{searchResultsList}</div> : <></>}
 

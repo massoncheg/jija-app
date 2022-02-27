@@ -22,7 +22,15 @@ const FlavoringsSelect = React.memo(({ state, language }: FlavoringsSelectProps)
 
     return (
         <div className="w-full h-full p-4 rounded-lg bg-bg2">
-            <div className="grid content-center justify-center grid-cols-1 gap-2 grig-rows-2">
+            <div className="flex flex-col content-center justify-center gap-2">
+
+                <div className="w-full p-2 text-center border-2 bg-bg3 rounded-xl border-bg1">
+                    {language === 'ru' ?
+                        "Выберите пропорции жидкости:"
+                        : "Choose liquid proportions:"
+                    }
+                </div>
+
                 <FlavoringsSearch addFlavoring={(e) => dispatch(handleFlavoringSelect(e))} language={language} />
 
                 <div className='flex flex-col grid-cols-1 gap-1 p-2 border-2 bg-bg3 rounded-xl border-bg1'>
