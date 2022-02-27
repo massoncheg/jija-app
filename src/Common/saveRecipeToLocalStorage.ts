@@ -1,5 +1,5 @@
 import { current } from "@reduxjs/toolkit";
-import { RedactorState} from "../Store/Slices/RecipeRedactor/redactorSlice";
+import { RedactorState } from "../Store/Slices/RecipeRedactor/redactorSlice";
 import { store } from "../Store/store";
 
 const saveRecipeToLocalStorage = () => {
@@ -37,7 +37,7 @@ const saveRecipeToLocalStorage = () => {
     else {
         alert("Не удалось сохранить рецепт")
     }
-    
+
 
 }
 export default saveRecipeToLocalStorage

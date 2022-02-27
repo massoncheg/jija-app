@@ -1,8 +1,7 @@
 /* Выбор базы */
 
 .rangeSlider {
-    width: auto;
-    height: auto;
+    width: 80%;
     margin: 0px 0;
     background-color: transparent;
     -webkit-appearance: none;
@@ -15,10 +14,11 @@
     background: #080070;
 }
 .rangeSlider::-webkit-slider-runnable-track {
+
     background: #283593;
     border: 0;
     border-radius: 0.25rem;
-    width: 20rem;
+
     height: 1rem;
     cursor: pointer;
 }

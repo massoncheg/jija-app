@@ -24,7 +24,7 @@ const SaveButton = React.memo(({ state, language }: SaveButtonProps) => {
     return (
         <div className='flex'>
 
-            <div className='bg-bg3 rounded mx-auto p-2'>
+            <div className='p-2 mx-auto rounded bg-bg3'>
                 <span className='flex pr-2'>
                     {language === 'ru' ?
                         "Название рецепта"
@@ -32,11 +32,11 @@ const SaveButton = React.memo(({ state, language }: SaveButtonProps) => {
                     }
                 </span>
                 <input
-                    className='w-full box-border bg-bg2 rounded pl-2'
+                    className='box-border w-full pl-2 rounded bg-bg2 focus:outline-none focus:bg-bg1'
                     type="text" onChange={(event) => dispatch(handleNameChange(event.currentTarget.value))} value={state.RecipeName} />
             </div>
 
-            <button className='bg-bg3 rounded mx-4 px-1 py-0 overflow-hidden'
+            <button className='px-1 py-0 mx-4 overflow-hidden rounded bg-bg3 focus:outline-none focus:bg-bg1'
                 onClick={() => {
                     dispatch(handleSubmit())
                     saveRecipeToLocalStorage();

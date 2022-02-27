@@ -1,4 +1,4 @@
-import { RedactorState} from "../Store/Slices/RecipeRedactor/redactorSlice";;
+import { RedactorState } from "../Store/Slices/RecipeRedactor/redactorSlice";;
 
 const loadRecipeFromLocalStorage = (name: string) => {
 
@@ -10,8 +10,10 @@ const loadRecipeFromLocalStorage = (name: string) => {
 
         return parsedArr.find((item: RedactorState) => item.common.RecipeName === name)
     }
-    else { alert("Не удалось загрузить рецепт") 
-        return undefined}
+    else {
+        alert("Не удалось загрузить рецепт")
+        return undefined
+    }
 
 
 }

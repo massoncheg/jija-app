@@ -25,6 +25,7 @@ interface FlavoringsSearchProps {
 const FlavoringsSearch = ({ addFlavoring, language }: FlavoringsSearchProps) => {
 
     const [searchText, setSearchText] = useState('');
+    const [isOpen, setIsOpen] = useState(true);
     const [searchResults, setSearchResults] = useState<DataBaseFlavoring[]>([]);
 
     const filterForSearch = (arr: DataBaseFlavoring[], val: string) => {
@@ -43,21 +44,20 @@ const FlavoringsSearch = ({ addFlavoring, language }: FlavoringsSearchProps) => 
         };
     }
 
-    let searchResultsList = searchResults.map(item => <FlavoringSearchItem addFlavoring={addFlavoring} key={item.id.toString()} id={item.id} engName={item.engName} rusName={item.rusName} language={language}/>)
+    let searchResultsList = searchResults.map(item => <FlavoringSearchItem addFlavoring={addFlavoring} key={item.id.toString()} id={item.id} engName={item.engName} rusName={item.rusName} language={language} />)
 
     return (
-        <div className='grid gap-1 p-2 grid-cols-1 justify-center bg-bg3 rounded-xl border-2 border-bg1'>
+        <div className='grid justify-center grid-cols-1 gap-1 p-2 border-2 bg-bg3 rounded-xl border-bg1'>
 
 
-            <div className=' h-auto w-full justify-self-center rounded'>
+            <div className='flex w-full h-auto rounded justify-self-center'>
                 <input type="text" placeholder={language === "ru" ? "Поиск ароматизаторов" : "Flavoring search"} id="fSearch"
-                    className='w-full rounded
-                    bg-bg2
-                    focus:outline-none focus:border-2 focus:border-bg1'
+                    className='w-full px-2 border-none rounded bg-bg2 focus:outline-none focus:bg-bg1'
                     onChange={searchChangeHandler} value={searchText}
                 />
+                <button className='w-8 ml-2 text-center rounded bg-bg2' onClick={() => isOpen ? setIsOpen(false) : setIsOpen(true)}>{!isOpen ? "▼" : "▲"}</button>
             </div>
-            <div className={cls.dropdownContent}>{searchResultsList}</div>
+            {isOpen ? <div className={cls.dropdownContent}>{searchResultsList}</div> : <></>}
 
         </div>
     )

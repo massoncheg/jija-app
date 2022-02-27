@@ -1,7 +1,7 @@
 import { createSlice, current, PayloadAction } from '@reduxjs/toolkit';
 import deleteRecipeFromLocalStorage from '../../../Common/deleteRecipeFromLocalStorage';
 import { DataBaseFlavoring } from '../../../Components/RecipeRedactor/Components/FlavoringsSelect/FlavoringsSearch';
-import { RedactorState} from '../../Slices/RecipeRedactor/redactorSlice';
+import { RedactorState } from '../../Slices/RecipeRedactor/redactorSlice';
 import { DescriptionState } from '../RecipeRedactor/redactorSlice';
 
 export interface SavedRecipeItem {

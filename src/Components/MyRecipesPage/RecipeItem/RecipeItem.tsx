@@ -52,43 +52,43 @@ const RecipeItem = ({ recipeName, recipeDescription }: RecipeItemProps) => {
 
     return (
         <div title="Щелкните по рецепту, чтобы открыть"
-            className='m-1 flex  lg:w-1/5 md:w-1/4 h-min justify-center overflow-hidden text-white bg-bg3 rounded-xl border-2 border-bg1'>
+            className='flex justify-center m-1 overflow-hidden text-white border-2 lg:w-1/5 md:w-1/4 h-min bg-bg3 rounded-xl border-bg1'>
 
-            <div className='hidden self-start flex-col w-full justify-center content-center' style={{ display: "none" }} id={recipeName + 'front'}>
+            <div className='flex-col content-center self-start justify-center hidden w-full' style={{ display: "none" }} id={recipeName + 'front'}>
 
-                <div className='bg-bg2 rounded-t-lg text-center'>{recipeName}</div>
+                <div className='text-center rounded-t-lg bg-bg2'>{recipeName}</div>
 
                 <div className='flex justify-center'>
-                    <button className='p-1 py-0 bg-bg2 rounded-xl border-2 border-bg1 my-1' onClick={() => loadRecipe(recipeName)}>Загрузить</button>
-                    <button className='p-1 py-0 bg-bg2 rounded-xl border-2 border-bg1 my-1' onClick={() => dispatch(handleRecipeDelete(recipeName))}>Удалить</button>
-                    <button className='p-1 py-0 bg-bg2 rounded-xl border-2 border-bg1 my-1' onClick={() => handleRecipeOpen(recipeName)}>Скрыть</button>
+                    <button className='p-1 py-0 my-1 border-2 bg-bg2 rounded-xl border-bg1' onClick={() => loadRecipe(recipeName)}>Загрузить</button>
+                    <button className='p-1 py-0 my-1 border-2 bg-bg2 rounded-xl border-bg1' onClick={() => dispatch(handleRecipeDelete(recipeName))}>Удалить</button>
+                    <button className='p-1 py-0 my-1 border-2 bg-bg2 rounded-xl border-bg1' onClick={() => handleRecipeOpen(recipeName)}>Скрыть</button>
                 </div>
 
-                <div className='flex flex-wrap flex-col justify-center text-left h-auto text-ellipsis m-2'>
-                    <div className='flex flex-wrap flex-row p-2  bg-bg2 rounded-xl border-2 border-bg1'>
+                <div className='flex flex-col flex-wrap justify-center h-auto m-2 text-left text-ellipsis'>
+                    <div className='flex flex-row flex-wrap p-2 border-2 bg-bg2 rounded-xl border-bg1'>
                         <div>Общий объем жидкости: </div>
-                        <div className='w-min px-1 mx-1 mb-2 rounded-md bg-bg3'>{recipeDescription.liquidVolume}мл</div>
+                        <div className='px-1 mx-1 mb-2 rounded-md w-min bg-bg3'>{recipeDescription.liquidVolume}мл</div>
 
                         <div>Нужно добавить пропиленгликоля: </div>
-                        <div className='w-min px-1 mx-1 mb-2 rounded-md bg-bg3'>{recipeDescription.pgVolume.toFixed(2)}мл</div>
-                        
+                        <div className='px-1 mx-1 mb-2 rounded-md w-min bg-bg3'>{recipeDescription.pgVolume.toFixed(2)}мл</div>
+
                         <div>Нужно добавить глицерина: </div>
-                        <div className='w-min px-1 mx-1 mb-2 rounded-md bg-bg3'>{recipeDescription.vgVolume.toFixed(2)}мл</div>
-                        
+                        <div className='px-1 mx-1 mb-2 rounded-md w-min bg-bg3'>{recipeDescription.vgVolume.toFixed(2)}мл</div>
+
                         <div>Нужно добавить никотина: </div>
-                        <div className='w-min px-1 mx-1 mb-2 rounded-md bg-bg3'>{recipeDescription.nicotineVolume.toFixed(2)}мл</div>
-                        
+                        <div className='px-1 mx-1 mb-2 rounded-md w-min bg-bg3'>{recipeDescription.nicotineVolume.toFixed(2)}мл</div>
+
                         <div>Общий объем ароматизаторов: </div>
-                        <div className='w-min px-1 mx-1 mb-2 rounded-md bg-bg3'>{recipeDescription.overallFlavorsVolume.toFixed(2)}мл</div>
+                        <div className='px-1 mx-1 mb-2 rounded-md w-min bg-bg3'>{recipeDescription.overallFlavorsVolume.toFixed(2)}мл</div>
                     </div>
 
-                    <div className='p-2 bg-bg3 rounded-xl border-2 border-bg1 mt-2'>
+                    <div className='p-2 mt-2 border-2 bg-bg3 rounded-xl border-bg1'>
                         <div>Объемы ароматизаторов:</div>
                         <div>{
                             recipeDescription.selectedFlavorsVolumes!.length !== 0 ?
                                 recipeDescription.selectedFlavorsVolumes!.map(f => {
                                     return (
-                                        <div className='p-2 bg-bg2 rounded-xl border-2 border-bg1 my-1'
+                                        <div className='p-2 my-1 border-2 bg-bg2 rounded-xl border-bg1'
                                             key={f.engName}>
                                             <span>{f.engName}</span>
                                             <span> {f.flavoringPercent.toFixed(2)}%</span>
@@ -103,7 +103,7 @@ const RecipeItem = ({ recipeName, recipeDescription }: RecipeItemProps) => {
 
             </div>
 
-            <button className='block w-full h-60 text-center' onClick={() => handleRecipeOpen(recipeName)} id={recipeName + 'back'}>
+            <button className='block w-full text-center h-60' onClick={() => handleRecipeOpen(recipeName)} id={recipeName + 'back'}>
                 {recipeName}
             </button>
 

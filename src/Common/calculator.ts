@@ -3,7 +3,7 @@ import { SelectedFlavoring } from "../Store/Slices/RecipeRedactor/redactorSlice"
 import { BaseSelectState, FlavoringsSelectState } from "../Store/Slices/RecipeRedactor/redactorSlice"
 
 const calculateDescription = (baseState: BaseSelectState, flavoringsState: FlavoringsSelectState) => {
-    
+
     const result = {} as DescriptionState;
 
     result.liquidVolume = baseState.liquidVolume;
@@ -40,4 +40,4 @@ const calculator = {
     },
     calculatePgVolume: (liquidVolume: number, pgProportion: number, NicotineVolume: number, overallFlavorsVolume: number) => { return liquidVolume * (pgProportion / 100) - NicotineVolume - overallFlavorsVolume }
 }
-export {calculator, calculateDescription}
+export { calculator, calculateDescription }

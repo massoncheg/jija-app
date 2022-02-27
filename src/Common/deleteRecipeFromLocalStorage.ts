@@ -1,4 +1,4 @@
-import { RedactorState} from "../Store/Slices/RecipeRedactor/redactorSlice";
+import { RedactorState } from "../Store/Slices/RecipeRedactor/redactorSlice";
 
 const deleteRecipeFromLocalStorage = (name: string) => {
 

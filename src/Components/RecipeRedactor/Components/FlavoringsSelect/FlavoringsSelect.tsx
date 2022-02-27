@@ -7,7 +7,7 @@ import {
     handleFlavoringDelete
 } from "../../../../Store/Slices/RecipeRedactor/redactorSlice";
 import { useDispatch } from "react-redux";
-import SelectedFlavoringItem from "./SelectedFlavoringItem";
+import FlavoringSelectItem from "./FlavoringSelectItem";
 
 /* Здесь можно будет выбрать ароматизаторы и их процент  */
 
@@ -21,11 +21,11 @@ const FlavoringsSelect = React.memo(({ state, language }: FlavoringsSelectProps)
     const dispatch = useDispatch();
 
     return (
-        <div className="bg-bg2 w-full h-full p-4 rounded-lg">
-            <div className="grid gap-2 grig-rows-2 grid-cols-1 content-center justify-center">
+        <div className="w-full h-full p-4 rounded-lg bg-bg2">
+            <div className="grid content-center justify-center grid-cols-1 gap-2 grig-rows-2">
                 <FlavoringsSearch addFlavoring={(e) => dispatch(handleFlavoringSelect(e))} language={language} />
 
-                <div className='flex flex-col gap-1 p-2 grid-cols-1 bg-bg3 rounded-xl border-2 border-bg1'>
+                <div className='flex flex-col grid-cols-1 gap-1 p-2 border-2 bg-bg3 rounded-xl border-bg1'>
                     <div className='text-xl w-80'>
                         {language === "ru" ?
                             "Выбранные ароматизаторы:"
@@ -35,7 +35,7 @@ const FlavoringsSelect = React.memo(({ state, language }: FlavoringsSelectProps)
                     <div className="justify-self-center">
                         {state.selectedFlavors.map(
                             (item: { flavoring: DataBaseFlavoring, flavoringPercent: number }) =>
-                                <SelectedFlavoringItem
+                                <FlavoringSelectItem
                                     key={item.flavoring.id.toString()}
                                     engName={item.flavoring.engName}
                                     flavoringPercent={item.flavoringPercent}

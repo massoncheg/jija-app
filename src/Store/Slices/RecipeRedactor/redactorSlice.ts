@@ -114,6 +114,9 @@ export const redactorSlice = createSlice({
             if (!isNaN(+action.payload) && +action.payload < 99999) {
                 state.base.liquidVolume = +action.payload;
             }
+            if (+action.payload < 0) {
+                state.base.liquidVolume = 0;
+            }
         },
 
         // Конфигурация ароматизаторов 
@@ -147,7 +150,7 @@ export const redactorSlice = createSlice({
         handlePercentageChange: (state, action: PayloadAction<{ id: number, value: string }>) => {
             const indexPercentToChange = state.flavorings.selectedFlavors.findIndex((item: SelectedFlavoring) => item.flavoring.id === Number(action.payload.id));
             state.flavorings.selectedFlavors[indexPercentToChange] = { ...state.flavorings.selectedFlavors[indexPercentToChange], flavoringPercent: +action.payload.value };
-            if (state.flavorings.selectedFlavors[indexPercentToChange].flavoringPercent > 50){
+            if (state.flavorings.selectedFlavors[indexPercentToChange].flavoringPercent > 50) {
                 state.flavorings.selectedFlavors[indexPercentToChange] = { ...state.flavorings.selectedFlavors[indexPercentToChange], flavoringPercent: 50 };
             }
         },

@@ -1,4 +1,4 @@
-import React from 'react';  
+import React from 'react';
 import { Route, Routes } from "react-router-dom";
 import Header from './Components/Header/Header';
 import MyRecipes from './Components/MyRecipesPage/MyRecipes'
@@ -12,12 +12,12 @@ const App = () => {
   const state: RootState = useSelector((state: RootState) => state)
   return (
 
-    <div id="app" className="bg-bg4 min-h-screen">
-      <Header language={state.global.language}/>
+    <div id="app" className="min-h-screen bg-bg4">
+      <Header language={state.global.language} />
       <main className="min-h-max">
         <Routes>
-          <Route path="/about" element={<About language={state.global.language}/>} />
-          <Route path="/my-recipes" element={<MyRecipes state={state.recipes} language={state.global.language}/>} />
+          <Route path="/about" element={<About language={state.global.language} />} />
+          <Route path="/my-recipes" element={<MyRecipes state={state.recipes} language={state.global.language} />} />
           <Route path="/redactor" element={<RecipeRedactor
             commonState={state.redactor.common}
             baseState={state.redactor.base}

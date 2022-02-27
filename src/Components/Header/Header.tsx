@@ -26,10 +26,10 @@ const Header = ({ language }: HeaderProps) => {
         <header
             className="bg-bg1 border-gray-200 px-2 sm:px-4 py-3.5">
 
-            <div className="container flex flex-wrap justify-between items-center mx-auto">
+            <div className="container flex flex-wrap items-center justify-between mx-auto">
 
                 <div className="flex">
-                    <span className="self-center text-lg text-white font-semibold whitespace-nowrap ">Liquid calculator</span>
+                    <span className="self-center text-lg font-semibold text-white whitespace-nowrap ">Liquid calculator</span>
                 </div>
 
                 <button type="button"
@@ -42,10 +42,10 @@ const Header = ({ language }: HeaderProps) => {
                 </button>
 
                 <nav className="hidden w-full md:block md:w-auto" id="navMenu">
-                    <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-base md:font-medium text-gray-400 ">
+                    <ul className="flex flex-col mt-4 text-gray-400 md:flex-row md:space-x-8 md:mt-0 md:text-base md:font-medium ">
                         <li>
                             <NavLink to={"/my-recipes"}
-                                className="block py-2 pr-4 pl-3 hover:text-white md:hover:bg-transparent border-gray-700">
+                                className="block py-2 pl-3 pr-4 border-gray-700 hover:text-white md:hover:bg-transparent">
                                 {language === 'ru' ?
                                     "Мои рецепты"
                                     : "My recipes"
@@ -55,7 +55,7 @@ const Header = ({ language }: HeaderProps) => {
                         </li>
                         <li>
                             <NavLink to={"/redactor"}
-                                className="block py-2 pr-4 pl-3 hover:text-white md:hover:bg-transparent border-gray-700">
+                                className="block py-2 pl-3 pr-4 border-gray-700 hover:text-white md:hover:bg-transparent">
                                 {language === 'ru' ?
                                     "Редактор"
                                     : "Redactor"
@@ -64,7 +64,7 @@ const Header = ({ language }: HeaderProps) => {
                         </li>
                         <li>
                             <NavLink to={"/about"}
-                                className="block py-2 pr-4 pl-3 hover:text-white md:hover:bg-transparent border-gray-700">
+                                className="block py-2 pl-3 pr-4 border-gray-700 hover:text-white md:hover:bg-transparent">
                                 {language === 'ru' ?
                                     "О проекте"
                                     : "About"
@@ -73,9 +73,7 @@ const Header = ({ language }: HeaderProps) => {
                         </li>
                         <li className='flex content-center'>
                             <select value={language} onChange={(event) => dispatch(handleLanguageSelect(event.currentTarget.value))}
-                                className='
-                            bg-bg2 font-medium w-min px-2 text-center rounded 
-                            focus:outline-none focus:border-2 focus:border-bg1'>
+                                className='px-2 font-medium text-center rounded  bg-bg2 w-min focus:outline-none focus:border-2 focus:border-bg1'>
                                 <option value="ru">RU</option>
                                 <option value="en">EN</option>
                             </select>

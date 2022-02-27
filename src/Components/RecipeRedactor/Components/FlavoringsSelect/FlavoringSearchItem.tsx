@@ -9,19 +9,17 @@ export interface FlavoringSearchItemProps {
     language: string;
 }
 
-const FlavoringSearchItem = ({ addFlavoring, id, engName, rusName,language }: FlavoringSearchItemProps) => {
+const FlavoringSearchItem = ({ addFlavoring, id, engName, rusName, language }: FlavoringSearchItemProps) => {
 
     return (
 
-        <button className='block w-full m-0'
+        <button className='block w-full m-0 text-sm'
 
             onClick={(e) => addFlavoring(id, e)} title="Нажмите, чтобы добавить">
-            <div className='grid grid-cols-1 grid-rows-2 gap-0 justify-center 
-            h-min  
-            bg-bg3 border-2 border-bg1  rounded-xl'>
-                <div className=' justify-self-center self-center text-white w-35 border-b-2 border-bg1'>{engName || ""} </div>
+            <div className='grid justify-center grid-cols-1 grid-rows-2 gap-0 border-2 h-min bg-bg3 border-bg1 rounded-xl'>
+                <div className='self-center text-white border-b-2 justify-self-center w-35 border-bg1'>{engName || ""} </div>
 
-                {language === 'ru' ? <div className=' justify-self-center self-center text-white w-35 '>{rusName || ""}</div>: <></>}
+                {language === 'ru' ? <div className='self-center text-white justify-self-center w-35'>{rusName || ""}</div> : <></>}
             </div>
         </button>
 

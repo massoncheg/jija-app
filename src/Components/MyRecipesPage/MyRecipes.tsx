@@ -20,15 +20,15 @@ const MyRecipes = ({ language, state }: MyRecipesProps) => {
         <div className="bg-bg4">
 
             {recipeItems.length !== 0 ?
-                <div className='flex flex-wrap gap-4 md:flex-row flex-col place-content-center'>
+                <div className='flex flex-col flex-wrap gap-4 md:flex-row place-content-center'>
                     {recipeItems.map((item) => <RecipeItem recipeName={item.name} key={item.name} recipeDescription={item.description} />)}
                 </div>
-                : <div className='text-center mx-auto my-4 text-lg'>
+                : <div className='mx-auto my-4 text-lg text-center'>
                     {language === 'ru' ?
                         "Сохраненных рецептов еще нет, попробуйте создать один"
                         : "There are no recipes yet, try to create one"
                     }
-                    <Link className='bg-bg2 px-2 mx-1 text-white rounded-lg hover:bg-bg3' to="/redactor">
+                    <Link className='px-2 mx-1 text-white rounded-lg bg-bg2 hover:bg-bg3' to="/redactor">
                         {language === 'ru' ?
                             "здесь"
                             : "here"
@@ -39,8 +39,8 @@ const MyRecipes = ({ language, state }: MyRecipesProps) => {
             }
 
 
-            <div className='w-min text-white rounded-lg bg-bg2 mt-16 mx-auto hover:bg-bg3'>
-                <button className='w-max px-4' onClick={() => dispatch(handleLibraryClear())}>
+            <div className='mx-auto mt-16 text-white rounded-lg w-min bg-bg2 hover:bg-bg3'>
+                <button className='px-4 w-max' onClick={() => dispatch(handleLibraryClear())}>
                     {language === 'ru' ?
                         "Очистить хранилище"
                         : "Clear library"

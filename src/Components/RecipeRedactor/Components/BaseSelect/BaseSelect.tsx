@@ -24,34 +24,37 @@ const BaseSelect = React.memo(({ state, language }: BaseSelectProps) => {
 
 
     return (
-        <div className="flex bg-bg2 w-full h-full py-4 rounded-lg content-center justify-center">
+        <div className="flex content-center justify-center w-full h-[30rem] py-4 rounded-lg bg-bg2">
 
-            <div className="grid min-w-full px-4 gap-2 grid-cols-2 grid-rows-6 content-center justify-center text-center">
-                <div className=" self-start col-span-2 p-2 bg-bg3 rounded-xl border-2 border-bg1">
+            <div className="grid content-center justify-center min-w-full grid-cols-2 grid-rows-6 gap-2 px-4 text-center">
+                <div className="self-start col-span-2 p-2 border-2 bg-bg3 rounded-xl border-bg1">
                     Выберите пропорции жидкости:
                 </div>
 
-                <div className="col-span-2 grid grid-cols-2 grid-rows-1 items-center bg-bg3 rounded-xl border-2 border-bg1">
+                <div className="grid items-center grid-cols-2 col-span-2 grid-rows-1 border-2 bg-bg3 rounded-xl border-bg1">
                     <div>
-                        <span>
+                        <span className='text-ellipsis'>
                             {language === 'ru' ?
-                                "PG-Пропиленгликоль"
+                                "PG-Пропилен-гликоль"
                                 : "PG-Propylene glycol"
                             }
-
                         </span>
                     </div>
-                    <div>
-                        <input type="range" min="0" max="100" step="5"
-                            className={cls.rangeSlider}
-                            onInput={(event) => dispatch(handlePgProportionsChange(event.currentTarget.value))}
-                            value={state.pgProportion} />
-                        <span>{state.pgProportion}%</span>
+                    <div className='flex flex-col justify-center'>
+                        <div className='flex justify-center justify-self-center'><span className='block pl-3 w-min justify-self-center'>{state.pgProportion}%</span></div>
+
+                        <div className='flex justify-center w-full justify-self-center'>
+                            <input type="range" min="0" max="100" step="5"
+                                className={cls.rangeSlider}
+                                onInput={(event) => dispatch(handlePgProportionsChange(event.currentTarget.value))}
+                                value={state.pgProportion} />
+                        </div>
+
                     </div>
                 </div>
 
 
-                <div className="col-span-2 grid grid-cols-2 grid-rows-1 items-center bg-bg3 rounded-xl border-2 border-bg1">
+                <div className="grid items-center grid-cols-2 col-span-2 grid-rows-1 border-2 bg-bg3 rounded-xl border-bg1">
                     <div>
                         <span>
                             {language === 'ru' ?
@@ -60,26 +63,30 @@ const BaseSelect = React.memo(({ state, language }: BaseSelectProps) => {
                             }
                         </span>
                     </div>
-                    <div>
-                        <input type="range" min="0" max="100" step="5"
-                            className={cls.rangeSlider}
-                            onChange={(event) => dispatch(handleVgProportionsChange(event.currentTarget.value))}
-                            value={state.vgProportion} />
-                        <span>{state.vgProportion}%</span>
+                    <div className='flex flex-col justify-center'>
+                        <div className='flex justify-center justify-self-center'><span className='block pl-3 w-min justify-self-center'>{state.vgProportion}%</span></div>
+
+                        <div className='flex justify-center w-full justify-self-center'>
+                            <input type="range" min="0" max="100" step="5"
+                                className={cls.rangeSlider}
+                                onInput={(event) => dispatch(handleVgProportionsChange(event.currentTarget.value))}
+                                value={state.vgProportion} />
+                        </div>
+
                     </div>
                 </div>
 
-                <div className="col-span-2 grid grid-cols-2 grid-rows-1 items-center bg-bg3 rounded-xl border-2 border-bg1">
+                <div className="grid items-center grid-cols-2 col-span-2 grid-rows-1 border-2 bg-bg3 rounded-xl border-bg1">
                     <div>
                         {language === 'ru' ?
-                            "Выберите тип никотина:"
+                            "Тип никотина:"
                             : "Choose the nicotine type"
                         }
                     </div>
-                    <div>
+                    <div className="flex items-center justify-center">
                         <select value={state.nicotineType} onChange={(event) => dispatch(handleNicotineTypeChange(event.currentTarget.value))}
                             className='
-                            bg-bg2 font-medium w-max text-center rounded 
+                            bg-bg2 font-medium w-[80%] text-left rounded text-ellipsis
                             focus:outline-none focus:border-2 focus:border-bg1'>
                             <option value="Salt">
                                 {language === 'ru' ?
@@ -89,7 +96,7 @@ const BaseSelect = React.memo(({ state, language }: BaseSelectProps) => {
                             </option>
                             <option value="Standard">
                                 {language === 'ru' ?
-                                    "Стандартный (10мг/мл)"
+                                    "Стандарт (10мг/мл)"
                                     : "Standard (10mg/ml)"
                                 }
                             </option>
@@ -98,36 +105,36 @@ const BaseSelect = React.memo(({ state, language }: BaseSelectProps) => {
                 </div>
 
 
-                <div className="col-span-2 grid grid-cols-2 grid-rows-1 items-center bg-bg3 rounded-xl border-2 border-bg1">
+                <div className="grid items-center grid-cols-2 col-span-2 grid-rows-1 border-2 bg-bg3 rounded-xl border-bg1">
 
                     <div>
                         {language === 'ru' ?
-                            "Выберите крепость жидкости:"
+                            "Крепость жидкости:"
                             : "Choose a nicotine strength"
                         }
                     </div>
-                    <div>
-                        <input type="range" min="0" max="50" step="5"
-                            className={cls.rangeSlider}
-                            onChange={(event) => dispatch(handleNicotinePercentageChange(event.currentTarget.value))}
-                            value={state.nicotinePercentage} />
-                        <span>{state.nicotinePercentage}mg</span>
+                    <div className='flex flex-col justify-center'>
+                        <div className='flex justify-center justify-self-center'><span>{state.nicotinePercentage}mg</span></div>
+
+                        <div className='flex justify-center w-full justify-self-center'>
+                            <input type="range" min="0" max="50" step="5"
+                                className={cls.rangeSlider}
+                                onChange={(event) => dispatch(handleNicotinePercentageChange(event.currentTarget.value))}
+                                value={state.nicotinePercentage} />
+                        </div>
                     </div>
 
                 </div>
-                <div className="col-span-2 grid grid-cols-2 grid-rows-1 items-center bg-bg3 rounded-xl border-2 border-bg1">
+                <div className="grid items-center grid-cols-2 col-span-2 grid-rows-1 border-2 bg-bg3 rounded-xl border-bg1">
                     <div>
                         {language === 'ru' ?
-                            "Выберите объем жидкости:"
+                            "Объем жидкости:"
                             : "Choose a liquid volume"
                         }
-
                     </div>
                     <div>
                         <input type='number' min="0" max='99999'
-                            className="
-                            bg-bg2 rounded text-center
-                            focus:outline-none focus:border-2 focus:border-bg1"
+                            className="text-center rounded bg-bg2 focus:outline-none focus:bg-bg1"
                             value={state.liquidVolume || ""}
                             onChange={(event) => dispatch(handleLiquidVolumeChange(event.currentTarget.value))}
                         />

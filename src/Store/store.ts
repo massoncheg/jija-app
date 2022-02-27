@@ -7,7 +7,7 @@ import globalReducer from './Slices/Global/globalSlice'
 export const store = configureStore({
     reducer: {
         redactor: redactorReducer,
-        recipes: recipesReducer,      
+        recipes: recipesReducer,
         global: globalReducer,
     },
 })
