@@ -17,7 +17,7 @@ const MyRecipes = ({ language, state }: MyRecipesProps) => {
     const dispatch = useDispatch()
     const recipeItems = state.savedRecipes
     return (
-        <div className="bg-bg4">
+        <div className="bg-bg4 z-[0]">
 
             {recipeItems.length !== 0 ?
                 <div className='flex flex-col flex-wrap gap-4 md:flex-row place-content-center'>

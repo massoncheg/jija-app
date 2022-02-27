@@ -8,6 +8,7 @@ import { setBaseState } from "../../../Store/Slices/RecipeRedactor/redactorSlice
 import { DescriptionState, setDescriptionState } from "../../../Store/Slices/RecipeRedactor/redactorSlice";
 import { setFlavoringsState } from "../../../Store/Slices/RecipeRedactor/redactorSlice";
 import { RedactorState } from "../../../Store/Slices/RecipeRedactor/redactorSlice";
+import RecipeItemModal from "./RecipeItemModal";
 
 import cls from "./RecipeItem.module.css"
 
@@ -36,78 +37,32 @@ const RecipeItem = ({ recipeName, recipeDescription }: RecipeItemProps) => {
     }
 
     const handleRecipeOpen = (id: string) => {
-        const elementFront = document.getElementById(id + 'front')
-        const elementBack = document.getElementById(id + 'back')
+        const modalBg = document.getElementById(id + 'modalBg')
+        const modalContent = document.getElementById(id + 'modalContent')
 
-
-        if (elementFront && elementBack && elementFront.style.display === "none") {
-            elementFront.style.display = "flex"
-            elementBack.style.display = 'none'
+        if (modalBg && modalContent && modalBg.style.display === "none") {
+            modalBg.style.display = "block"
+            modalContent.style.display = "block"
         }
-        else if (elementFront && elementBack && elementFront.style.display !== "none") {
-            elementFront.style.display = "none"
-            elementBack.style.display = "block"
+        else if (modalBg && modalContent && modalBg.style.display !== "none") {
+            modalBg.style.display = "none"
+            modalContent.style.display = "none"
         }
     }
 
     return (
-        <div title="Щелкните по рецепту, чтобы открыть"
-            className='flex justify-center m-1 overflow-hidden text-white border-2 lg:w-1/5 md:w-1/4 h-min bg-bg3 rounded-xl border-bg1'>
-
-            <div className='flex-col content-center self-start justify-center hidden w-full' style={{ display: "none" }} id={recipeName + 'front'}>
-
-                <div className='text-center rounded-t-lg bg-bg2'>{recipeName}</div>
-
-                <div className='flex justify-center'>
-                    <button className='p-1 py-0 my-1 border-2 bg-bg2 rounded-xl border-bg1' onClick={() => loadRecipe(recipeName)}>Загрузить</button>
-                    <button className='p-1 py-0 my-1 border-2 bg-bg2 rounded-xl border-bg1' onClick={() => dispatch(handleRecipeDelete(recipeName))}>Удалить</button>
-                    <button className='p-1 py-0 my-1 border-2 bg-bg2 rounded-xl border-bg1' onClick={() => handleRecipeOpen(recipeName)}>Скрыть</button>
-                </div>
-
-                <div className='flex flex-col flex-wrap justify-center h-auto m-2 text-left text-ellipsis'>
-                    <div className='flex flex-row flex-wrap p-2 border-2 bg-bg2 rounded-xl border-bg1'>
-                        <div>Общий объем жидкости: </div>
-                        <div className='px-1 mx-1 mb-2 rounded-md w-min bg-bg3'>{recipeDescription.liquidVolume}мл</div>
-
-                        <div>Нужно добавить пропиленгликоля: </div>
-                        <div className='px-1 mx-1 mb-2 rounded-md w-min bg-bg3'>{recipeDescription.pgVolume.toFixed(2)}мл</div>
-
-                        <div>Нужно добавить глицерина: </div>
-                        <div className='px-1 mx-1 mb-2 rounded-md w-min bg-bg3'>{recipeDescription.vgVolume.toFixed(2)}мл</div>
-
-                        <div>Нужно добавить никотина: </div>
-                        <div className='px-1 mx-1 mb-2 rounded-md w-min bg-bg3'>{recipeDescription.nicotineVolume.toFixed(2)}мл</div>
-
-                        <div>Общий объем ароматизаторов: </div>
-                        <div className='px-1 mx-1 mb-2 rounded-md w-min bg-bg3'>{recipeDescription.overallFlavorsVolume.toFixed(2)}мл</div>
-                    </div>
-
-                    <div className='p-2 mt-2 border-2 bg-bg3 rounded-xl border-bg1'>
-                        <div>Объемы ароматизаторов:</div>
-                        <div>{
-                            recipeDescription.selectedFlavorsVolumes!.length !== 0 ?
-                                recipeDescription.selectedFlavorsVolumes!.map(f => {
-                                    return (
-                                        <div className='p-2 my-1 border-2 bg-bg2 rounded-xl border-bg1'
-                                            key={f.engName}>
-                                            <span>{f.engName}</span>
-                                            <span> {f.flavoringPercent.toFixed(2)}%</span>
-                                            <span> {f.flavoringVolume.toFixed(2)} мл или</span>
-                                            <span> {f.flavoringVolumeDrops.toFixed(0)} кап</span>
-                                        </div>)
-                                }) : <></>}
-                        </div>
-                    </div>
-                </div>
-
-
+        <div className="w-[80%] md:w-1/5 lg:w-1/5">
+            <div title="Щелкните по рецепту, чтобы открыть"
+                className='flex justify-center m-1 overflow-hidden text-white border-2 h-min bg-bg3 rounded-xl border-bg1'>
+            
+                <button className='block w-full text-center h-60' onClick={() => handleRecipeOpen(recipeName)} id={recipeName + 'back'}>
+                    {recipeName}
+                </button>
+            
             </div>
-
-            <button className='block w-full text-center h-60' onClick={() => handleRecipeOpen(recipeName)} id={recipeName + 'back'}>
-                {recipeName}
-            </button>
-
+            <RecipeItemModal recipeName={recipeName} recipeDescription={recipeDescription}/>
         </div>
+
     )
 }
 export default RecipeItem
