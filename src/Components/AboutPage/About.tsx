@@ -55,17 +55,51 @@ const About = ({ language }: AboutPageProps) => {
     }
     else {
         return (
+
             <div className='m-2 '>
-                <h1 className='text-2xl font-medium'>About this app</h1>
-                <p className='text-lg'>
-                    This app is a simple project I've developed to learn frontend using React
-                </p>
-                <p className='text-lg'>
-                    You can see the source code of the project
-                    <a className='bg-bg3 text-bg4 px-2 mx-1 rounded-lg hover:bg-[#28359380] ' href="https://github.com/massoncheg/jija-app">
-                        here
-                    </a>
-                </p>
+                <div className='flex justify-center'>
+                    <div className='w-3/4 p-4'>
+                        <h1 className='mb-2 text-4xl font-medium'>About this app</h1>
+                        <h2 className='mb-1 text-2xl font-medium' > What is this app for?</h2>
+                        <p className='mb-1 text-lg'>
+                            Liquid calculator is a Single Page Application for e-cigarets liquid making which allows to
+                            calculate components and flavorings volumes and save result to local recipe storage.
+                        </p>
+                        <h2 className='mb-1 text-2xl font-medium'>How to use it?</h2>
+                        <p className='mb-1 text-lg'>
+                            To create a recipe go to
+                            <Link to={'/redactor'} className='text-bg3 font-bold px-1 rounded-lg hover:text-bg2 focus:text-bg2 focus:outline-none focus:bg-[#5f5fc480]'>
+                                redactor
+                            </Link>
+                            <br />
+                            After saving the recipe, it will be available in
+                            <Link to={'/my-recipes'} className='text-bg3 font-bold px-1 rounded-lg hover:text-bg2 focus:text-bg2 focus:outline-none focus:bg-[#5f5fc480]'>
+                                recipe gallery
+                            </Link>
+                        </p>
+                        <h1 className='mb-2 text-2xl font-medium'>About development</h1>
+                        <p className='mb-1 text-lg'>
+                            This app is a simple project I've developed to learn frontend using
+                            <span className="mx-1 font-medium">
+                                React
+                            </span>
+                        </p>
+                        <p className='mb-1 text-lg'>
+                            <span className='mb-2 text-xl'>Used technologies:</span>
+                            <ul className='ml-8'>
+                                <li><span className="bg-[#20232a] px-2 font-medium rounded-md text-[#61dafb]">React</span> - for general development</li>
+                                <li><span className="bg-[#20232a] px-2 font-medium rounded-md text-[#ba8fff]">Redux Toolkit</span> - for State management</li>
+                                <li><span className="bg-[#20232a] px-2 font-medium rounded-md text-[#38bdf7]">Tailwind</span> - for styling</li>
+                            </ul>
+                        </p>
+                        <p className='mb-1 text-lg'>
+                            You can find the source code of the project
+                            <a className='text-bg3 font-bold px-1 rounded-lg hover:text-bg2 focus:outline-none focus:text-bg2 focus:bg-[#5f5fc480]' href="https://github.com/massoncheg/jija-app">
+                                here
+                            </a>
+                        </p>
+                    </div>
+                </div>
             </div>
         )
     }

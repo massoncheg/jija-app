@@ -70,7 +70,7 @@ const RecipeItemModal = ({ recipeName, recipeDescription }: RecipeItemModalProps
                         <button className='p-1 py-0 my-1 border-2 bg-bg2 rounded-xl border-bg1' onClick={() => dispatch(handleRecipeDelete(recipeName))}>Удалить</button>
                     </div>
                     <div className='flex flex-col flex-wrap justify-center h-auto m-2 text-left text-ellipsis'>
-                        <div className='flex flex-col flex-wrap justify-center p-2 border-2 bg-bg2 rounded-xl border-bg1'>
+                        <div className='flex flex-col flex-wrap justify-center border-2 md:p-2 bg-bg2 rounded-xl border-bg1'>
                             <div className='flex flex-row'>
                                 <div>Общий объем жидкости: </div>
                                 <div className='px-1 mx-1 mb-2 rounded-md w-min bg-bg3'>{recipeDescription.liquidVolume}мл</div>
