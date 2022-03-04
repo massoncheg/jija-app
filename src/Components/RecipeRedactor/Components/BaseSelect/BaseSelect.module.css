@@ -1,0 +1,60 @@
+/* Выбор базы */
+
+.rangeSlider {
+    width: 80%;
+    margin: 0px 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+}
+.rangeSlider:focus {
+    outline: none;
+    
+}
+
+/* Chrome support */
+
+.rangeSlider:focus::-webkit-slider-runnable-track{
+    background: #080070;
+}
+.rangeSlider:hover::-webkit-slider-runnable-track{
+    background: #080070;
+}
+.rangeSlider::-webkit-slider-runnable-track {
+
+    background: #283593;
+    border: 0;
+    border-radius: 0.25rem;
+
+    height: 1rem;
+    cursor: pointer;
+}
+.rangeSlider::-webkit-slider-thumb {
+    width: 0.75rem;
+    height: 1rem;
+    background: #e7e5df;
+    border: 1px solid rgba(8, 0, 112, 0.5);
+    border-radius: 0.25rem;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+/* FireFox support */
+
+.rangeSlider::-moz-range-track {
+   	background: #283593;
+    border: 0;
+    border-radius: 0.25rem;
+    height: 1rem;
+    cursor: pointer;
+  }
+  .rangeSlider::-moz-range-thumb {
+    width: 0.75rem;
+    height: 1rem;
+    background: #e7e5df;
+    border: 1px solid rgba(8, 0, 112, 0.5);
+    border-radius: 0.25rem;
+    cursor: pointer;
+    
+  }
+
+/* Выбор базы */

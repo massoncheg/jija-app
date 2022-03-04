@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import tpa from "../../../../Common/TpaFlavorsList"
 
 
-import cls from "../RedactorComponents.module.css"
+import cls from "./FlavoringsSelect.module.css"
 import FlavoringSearchItem from "./FlavoringSearchItem";
 
 

@@ -9,7 +9,7 @@ import { BaseSelectState } from "../../../../Store/Slices/RecipeRedactor/redacto
 import { handleSubmit } from "../../../../Store/Slices/RecipeRedactor/redactorSlice";
 import { RootState } from "../../../../Store/store";
 
-import cls from "../RedactorComponents.module.css"
+import cls from "./BaseSelect.module.css"
 
 interface BaseSelectProps {
     state: BaseSelectState;

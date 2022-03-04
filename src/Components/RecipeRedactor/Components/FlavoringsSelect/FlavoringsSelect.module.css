@@ -1,0 +1,70 @@
+
+/* Поиск и выбор аромок START */
+
+/* Поиск по ароматизаторам */
+
+.flavoringSearchWrapper {
+    background-color: rgb(255, 126, 158);
+    width: 25vw;
+    height: 30vh;
+
+    border: 2px solid rgb(16, 0, 41);
+    border-radius: 1vw;
+}
+
+.flavoringSearchInput {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    
+    margin-top: 1vh;
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 22vw;
+    padding: 0;
+}
+
+.dropdownContent::-webkit-scrollbar {
+    min-width: 0.5rem;
+    
+    max-width: 0.75rem;
+    background-color: transparent;
+    
+}
+
+.dropdownContent::-webkit-scrollbar-thumb {
+    background-color: #f5f5f6;
+    border-radius: 1rem;
+}
+
+.dropdownContent::-webkit-scrollbar-thumb:hover {
+    background-color: #253861;
+}
+
+.dropdownContent {
+    height: 15rem;
+    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 0.5rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(40 53 147 / var(--tw-bg-opacity));
+    border-width: 2px;
+    --tw-border-opacity: 1;
+    border-color: rgb(8 0 112 / var(--tw-border-opacity));
+    border-radius: 0.75rem;
+    overflow: scroll;
+    overflow-x: hidden;
+    scrollbar-width:thin;
+
+}
+
+/* Поиск по ароматизаторам */
+
+/* Выбранные ароматизаторы */
+
+/* Выбранные ароматизаторы */
+
+/* Поиск и выбор аромок END */
+
